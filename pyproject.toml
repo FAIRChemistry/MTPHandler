@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mtphandler"
-version = "0.2.13"
+version = "0.2.14"
 description = "Python package for processing, enriching, and converting microtiter plate data into standardized EnzymeML time-course data, ready for data science."
 authors = ["haeussma <83341109+haeussma@users.noreply.github.com>"]
 license = "MIT License"
