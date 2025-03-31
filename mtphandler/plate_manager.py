@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import sys
 from collections import defaultdict
 from typing import Any, Literal, Optional, Tuple, get_args
 
@@ -60,6 +61,46 @@ class PlateManager(BaseModel):
             if "name" not in data or data["name"] is None:
                 data["name"] = "MTP assay"
         return data
+
+    @staticmethod
+    def config_logger(
+        log_path: Optional[str] = None,
+        level: str = "INFO",
+        to_stdout: bool = False,
+    ):
+        """
+        Configures the internal Loguru logger.
+
+        Parameters:
+            log_path (str, optional): Path to the log file. If None, file logging is disabled.
+            level (str): Logging level (e.g., "DEBUG", "INFO", "WARNING", "ERROR").
+            to_stdout (bool): If True, log messages will also be forwarded to stdout.
+
+        Usage (in a Jupyter notebook or script):
+            >>> from mtphandler import handler
+            >>> handler.config_logger(log_path="app.log", level="DEBUG", to_stdout=True)
+            >>> handler.logger.info("This message will go to the file and stdout.")
+        """
+        logger.remove()
+
+        if to_stdout:
+            logger.add(
+                sys.stdout,
+                level=level,
+                colorize=True,
+                format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level}</level> | <cyan>{message}</cyan>",
+            )
+
+        if log_path:
+            logger.add(
+                log_path,
+                level=level,
+                format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}",
+                rotation="10 MB",
+                retention="10 days",
+            )
+
+        logger.debug("Logger configured")
 
     def define_molecule(
         self,
@@ -260,9 +301,9 @@ class PlateManager(BaseModel):
             if isinstance(init_conc, list):
                 if len(init_conc) == 1:
                     init_conc = init_conc[0]
-            assert isinstance(
-                init_conc, (float, int)
-            ), "Argument 'init_conc' must be a float or an integer."
+            assert isinstance(init_conc, (float, int)), (
+                "Argument 'init_conc' must be a float or an integer."
+            )
 
             self._assign_to_all(
                 species=species,
@@ -273,12 +314,12 @@ class PlateManager(BaseModel):
             )
 
         elif to == "columns":
-            assert (
-                isinstance(ids, list) and all(isinstance(i, int) for i in ids)
-            ), "Argument 'ids' must be a list of integers when 'to' is set to 'columns'."
+            assert isinstance(ids, list) and all(isinstance(i, int) for i in ids), (
+                "Argument 'ids' must be a list of integers when 'to' is set to 'columns'."
+            )
 
             self._assign_to_columns(
-                column_ids=ids,
+                column_ids=ids,  # type: ignore
                 species=species,
                 init_concs=init_conc,
                 conc_unit=conc_unit,
@@ -287,12 +328,12 @@ class PlateManager(BaseModel):
             )
 
         elif to == "rows":
-            assert isinstance(ids, list) and all(
-                isinstance(i, str) for i in ids
-            ), "Argument 'ids' must be a list of strings when 'to' is set to 'rows'."
+            assert isinstance(ids, list) and all(isinstance(i, str) for i in ids), (
+                "Argument 'ids' must be a list of strings when 'to' is set to 'rows'."
+            )
 
             self._assign_species_to_rows(
-                row_ids=ids,
+                row_ids=ids,  # type: ignore
                 species=species,
                 init_concs=init_conc,
                 conc_unit=conc_unit,
@@ -305,12 +346,12 @@ class PlateManager(BaseModel):
                 if len(init_conc) == 1:
                     init_conc = init_conc[0]
 
-            assert isinstance(
-                init_conc, float
-            ), "Argument 'init_conc' must be a float when 'to' is set to 'all_except'."
+            assert isinstance(init_conc, float), (
+                "Argument 'init_conc' must be a float when 'to' is set to 'all_except'."
+            )
 
             self._assign_species_to_all_except(
-                well_ids=ids,
+                well_ids=ids,  # type: ignore
                 species=species,
                 init_conc=init_conc,
                 conc_unit=conc_unit,
@@ -396,7 +437,7 @@ class PlateManager(BaseModel):
 
         # assert thal all columns are the same size
         assert all([len(column) == len(columns[0]) for column in columns]), (
-            "All columns must be the same size. " ""
+            "All columns must be the same size. "
         )
 
         # Handle init_concs
@@ -434,7 +475,6 @@ class PlateManager(BaseModel):
         silent: bool,
     ):
         # Handle row_ids
-
         if isinstance(row_ids, str):
             row_ids = [row_ids]
 
@@ -854,8 +894,8 @@ class PlateManager(BaseModel):
             target=species, wavelength=wavelength
         )
         if not blanking_wells:
-            print(
-                "No wells found to calculate the absorption contribution of the species."
+            logger.warning(
+                f"No wells found to calculate the absorption contribution of the species {species.name} ({species.id}). Was the species already blanked?"
             )
             return
 
@@ -911,7 +951,7 @@ class PlateManager(BaseModel):
 
                         well_blanked_count += 1
 
-        print(f"Blanked {well_blanked_count} wells containing {species.name}.\n")
+        logger.info(f"Blanked {well_blanked_count} wells containing {species.name}.")
 
     def to_enzymeml(
         self,
@@ -1007,9 +1047,8 @@ class PlateManager(BaseModel):
             else:
                 std_perc = 0.0
 
-            # Print formatted information
-            print(
-                f"Mean absorption of [bold magenta]{species.name}[/] ({species.id}) at"
+            logger.info(
+                f"Mean absorption of {species.name} ({species.id}) at"
                 f" {conc} {condition.conc_unit.name}: {mean_absorption:.4f} ±"
                 f" {std_perc:.0f}%  calculated based on wells"
                 f" {[well.id for well in wells]}."
@@ -1262,6 +1301,7 @@ if __name__ == "__main__":
     path = "docs/examples/data/ BioTek_Epoch2.xlsx"
 
     p = PlateManager.read_biotek(path)
+    p.config_logger(log_path="app.log", level="DEBUG", to_stdout=True)
     p.define_molecule("alc", 123)
     p.define_molecule("ala", 124)
     p.define_protein("asd", "adfaddf")
