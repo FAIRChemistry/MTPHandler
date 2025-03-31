@@ -60,13 +60,16 @@ def read_spectra_max_190(path, ph: float | None) -> Plate:
 
     # Extract the wavelength
     try:
-        wavelength = float(re.findall(wavelength_pattern, lines[1])[0])
+        wavelength_line = [line for line in lines if line.startswith("Plate:")][0]
+        wavelength = float(re.findall(wavelength_pattern, wavelength_line)[0])
     except ValueError:
         raise ValueError("Wavelengths could not be extracted.")
 
     try:
         blocks = identify_blocks(lines)
+
         times, temperatures, blocks = sanitize_blocks(blocks)
+
         try:
             data_matrix = np.array(blocks)
             data_matrix = data_matrix.swapaxes(0, 2)
@@ -97,11 +100,9 @@ def read_spectra_max_190(path, ph: float | None) -> Plate:
         df = pd.read_csv(data_io, sep="\t")
         # drop unnamed columns
         df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
-        print(df.index)
         time = df.pop("Time")
         time = [time_to_min_float(t) for t in time]
         temperatures = df.pop("Temperature(¡C)").values.tolist()
-        print(df)
 
         # iterate over the columns and create wells
         wells = []
@@ -161,9 +162,9 @@ def map_to_plate(
                 x_pos=column_id,
                 y_pos=row_id,
             )
-            assert (
-                len(times) == data_matrix[column_id, row_id].size
-            ), "Time and data length mismatch."
+            assert len(times) == data_matrix[column_id, row_id].size, (
+                "Time and data length mismatch."
+            )
             well.add_to_measurements(
                 wavelength=wavelength,
                 absorption=data_matrix[column_id, row_id].tolist(),
@@ -223,6 +224,16 @@ def sanitize_blocks(blocks):
     times, temperatures = [], []
 
     for block_id, block in enumerate(blocks):
+        # Filter out empty lines
+        block = [
+            line
+            for line in block
+            if line.replace("\t", "").replace("\n", "").replace("\r", "").strip() != ""
+        ]
+
+        if not block:
+            continue  # skip the entire block if it's empty
+
         for line_id, line in enumerate(block):
             if line_id == 0:
                 time, temp, line = line.split("\t", 2)
@@ -233,7 +244,9 @@ def sanitize_blocks(blocks):
             line = line.replace(",", ".")
             line = [float(entry) for entry in line.split("\t") if entry != ""]
 
-            blocks[block_id][line_id] = line
+            block[line_id] = line
+
+        blocks[block_id] = block
 
     return times, temperatures, blocks
 
@@ -255,13 +268,3 @@ def open_file(path: str, encoding: str):
     with open(path, "r", encoding=encoding) as file:
         lines = file.readlines()
         return lines
-
-
-if __name__ == "__main__":
-    path = (
-        "/Users/max/Documents/GitHub/MTPHandler/docs/examples/data/spectra_max_190.txt"
-    )
-
-    plate = read_spectra_max_190(path, ph=6.9)
-
-    print(plate.wells[0].measurements[0].absorption)

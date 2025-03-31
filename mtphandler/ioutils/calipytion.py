@@ -1,9 +1,7 @@
 from __future__ import annotations
 
-import numpy as np
 from calipytion import Calibrator
 from calipytion.model import Sample, Standard, UnitDefinition
-
 from mtphandler.model import Plate, Well
 from mtphandler.molecule import Molecule
 from mtphandler.tools import (
@@ -42,12 +40,12 @@ def _get_standard_wells(
         measurement = get_measurement(well, wavelength)
 
         # get all wells with one init condition that has a concentration grater than 0
-        int_concs_creater_than_zero = [
-            condition for condition in well.init_conditions if condition.init_conc > 0
-        ]
+        # int_concs_creater_than_zero = [
+        #     condition for condition in well.init_conditions if condition.init_conc > 0
+        # ]
 
-        if len(int_concs_creater_than_zero) == 1:
-            buffer_blank_wells.append(well)
+        # if len(int_concs_creater_than_zero) == 1:
+        #     buffer_blank_wells.append(well)
 
         if not well_contains_species(well, molecule.id, conc_above_zero=True):
             continue
@@ -92,6 +90,7 @@ def map_to_standard(
         molecule=molecule,
         wavelength=wavelength,
     )
+    print([well.id for well in standard_wells])
 
     # Map wells to samples of a standard
     samples = []
@@ -102,10 +101,10 @@ def map_to_standard(
 
         samples.append(
             Sample(
-                # id=well.id,
+                id=well.id,
                 concentration=condition.init_conc,
                 conc_unit=UnitDefinition(**condition.conc_unit.model_dump()),
-                signal=float(np.nanmean(measurement.absorption)),
+                signal=float(measurement.absorption[0]),
             )
         )
         phs.append(well.ph)
@@ -118,6 +117,13 @@ def map_to_standard(
     ph = phs[0]
 
     temp_unit = UnitDefinition(**plate.temperature_unit.model_dump())
+
+    # print lowest and highest signal
+    print(
+        min([sample.signal for sample in samples]),
+        max([sample.signal for sample in samples]),
+        "lowest and highest signal",
+    )
 
     # Create standard
     return Standard(
