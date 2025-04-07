@@ -171,7 +171,7 @@ class Plate_to_EnzymeMLDocument:
             )
 
             logger.debug(
-                f"Contributing species in well {well.id}: {[(state.species_id ,state.contributes_to_signal) for state in  photo_measurement.blank_states]}"
+                f"Contributing species in well {well.id}: {[(state.species_id, state.contributes_to_signal) for state in photo_measurement.blank_states]}"
             )
 
             # Check if only one species contributes to the signal
@@ -237,9 +237,9 @@ class Plate_to_EnzymeMLDocument:
             None,
         )
 
-        assert (
-            species_data is not None
-        ), f"Species {species_id} not found in measurement {measurement.id}."
+        assert species_data is not None, (
+            f"Species {species_id} not found in measurement {measurement.id}."
+        )
 
         if self.to_concentration:
             data_type = pe.DataTypes.CONCENTRATION
@@ -260,9 +260,6 @@ class Plate_to_EnzymeMLDocument:
         species_data.data_type = data_type
         species_data.data = data
         species_data.time = photo_measurement.time
-
-        if species_data.prepared is None:
-            species_data.prepared = species_data.initial
 
         species_data.initial = species_data.data[0]
 
@@ -429,9 +426,9 @@ class Plate_to_EnzymeMLDocument:
         """Initializes calibrators for all molecules with a standard."""
 
         for molecule in self.molecules:
-            assert (
-                molecule.id not in self.calibrator_dict
-            ), f"Calibrator for molecule {molecule.id} already exists in calibrator_dict."
+            assert molecule.id not in self.calibrator_dict, (
+                f"Calibrator for molecule {molecule.id} already exists in calibrator_dict."
+            )
 
             if not molecule.standard:
                 continue
