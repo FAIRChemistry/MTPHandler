@@ -677,7 +677,7 @@ class PlateManager(BaseModel):
         if not silent:
             ph_message = "[bold magenta]pH[/] and" if ph_set else ""
             print(
-                f"📍 Assigned {count} initial concentration coditions for {ph_message} [bold magenta]{list(species_matches)}[/]"
+                f"📍 Assigned {count} initial concentration conditions for {ph_message} [bold magenta]{list(species_matches)}[/]"
                 f" from {path} to the plate."
             )
 

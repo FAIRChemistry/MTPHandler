@@ -23,7 +23,8 @@ jobs:
         uses: codespell-project/actions-codespell@v2
         with:
           path: 'docs'
-          ignore_words_list: Varian, ABTS, SLAC
+          exclude_file: docs/examples/data
+          ignore_words_list: Varian,ABTS,SLAC
       - name: Codespell
         uses: codespell-project/actions-codespell@v2
         with:

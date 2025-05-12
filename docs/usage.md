@@ -325,7 +325,7 @@ After the Excel spreadsheet is filled out, the initial concentrations can be ass
     ```
     Output:
     ```bash
-    📍 Assigned 216 initial concentration coditions for ['TNB', 'TmSAHH', 'Hyc', 'McSAHH', 'SIH', 'DTNB', 'SAH', 
+    📍 Assigned 216 initial concentration conditions for ['TNB', 'TmSAHH', 'Hyc', 'McSAHH', 'SIH', 'DTNB', 'SAH', 
     'MhSAHH', 'BUFFER', 'MtSAHH'] from data/plate_map_SAHH_kinetics.xlsx to the plate.
     ```
 
@@ -467,7 +467,7 @@ __Optional arguments:__
 - `name`: An optional name for the EnzymeML document. If not provided, the name of the assay is used.
 - `wells_with_protein_only`: If set to `True`, only wells containing one or more proteins and the `detected_molecule` are included in the EnzymeML document. Default is `False`.
 - `well_ids`: Optionally, only a subset of wells can be included in the EnzymeML document by providing a list of well IDs. This enables for instance to create four separate EnzymeML documents for each of the assayed enzymes in this scenario.
-- to_concentration: If set to `True`, the measured signals are converted to concentrations using definde calibration models. Default is `False`. Otherwise the measured signals are included in the EnzymeML document.
+- to_concentration: If set to `True`, the measured signals are converted to concentrations using defined calibration models. Default is `False`. Otherwise the measured signals are included in the EnzymeML document.
 - `extrapolate`: If set to `True`, the calibration model is used to extrapolate the concentration of the detected molecule in wells where the signal was below or above the detection limit. Default is `False`. 
 - `wavelegth`: The wavelength at which the measurements were taken. If only one wavelength was measured, the `wavelength` argument is optional. If multiple wavelengths were measured, the `wavelength` argument is required.
 
