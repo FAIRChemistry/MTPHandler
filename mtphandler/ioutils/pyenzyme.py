@@ -2,14 +2,13 @@ import numpy as np
 import pyenzyme as pe
 from calipytion.tools.calibrator import Calibrator
 from loguru import logger
-from pyenzyme.model import DataTypes
-from pyenzyme.model import UnitDefinition as EnzML_UnitDef
+from mdmodels.units.annotation import UnitDefinitionAnnot
+from pyenzyme import DataTypes
 
 from mtphandler.model import (
     InitCondition,
     PhotometricMeasurement,
     Plate,
-    UnitDefinition,
     Well,
 )
 from mtphandler.molecule import Molecule, Protein
@@ -73,19 +72,18 @@ class Plate_to_EnzymeMLDocument:
         enzml_doc = pe.EnzymeMLDocument(name=self.name)
         logger.debug(f"Initialized EnzymeMLDocument with name {self.name}")
 
-        dummy_vessel = self._get_dummy_vessel()
-        enzml_doc.vessels = [dummy_vessel]
-
         # Add proteins to EnzymeML document
         enzml_doc.proteins = [
-            self.map_protein(protein, dummy_vessel.id) for protein in self.proteins
+            self.map_protein(
+                protein,
+            )
+            for protein in self.proteins
         ]
         logger.debug(f"Added {len(self.proteins)} proteins to EnzymeMLDocument")
 
         # Add small molecules to EnzymeML document
         enzml_doc.small_molecules = [
-            self.map_small_molecule(molecule, dummy_vessel.id)
-            for molecule in self.molecules
+            self.map_small_molecule(molecule) for molecule in self.molecules
         ]
         logger.debug(f"Added {len(self.molecules)} small molecules to EnzymeMLDocument")
 
@@ -165,9 +163,7 @@ class Plate_to_EnzymeMLDocument:
                 ph=well.ph,
                 group_id="",
                 temperature=self.temperature,
-                temperature_unit=EnzML_UnitDef(
-                    **self.plate.temperature_unit.model_dump()
-                ),
+                temperature_unit=self.plate.temperature_unit.name,
             )
 
             logger.debug(
@@ -263,17 +259,6 @@ class Plate_to_EnzymeMLDocument:
 
         species_data.initial = species_data.data[0]
 
-    @staticmethod
-    def _get_dummy_vessel():
-        from pyenzyme.units import dimensionless
-
-        return pe.Vessel(
-            id="v1",
-            name="microtiter plate",
-            volume=0,
-            unit=dimensionless,
-        )
-
     @property
     def temperature(self) -> float:
         return np.mean(self.plate.temperatures).tolist()
@@ -353,20 +338,20 @@ class Plate_to_EnzymeMLDocument:
     def add_to_species_data(
         measurement: pe.Measurement,
         init_conditions: list[InitCondition],
-        time_unit: UnitDefinition,
+        time_unit: UnitDefinitionAnnot,
     ):
         for condition in init_conditions:
             measurement.add_to_species_data(
                 species_id=condition.species_id,
                 initial=condition.init_conc,
                 prepared=condition.init_conc,
-                data_unit=EnzML_UnitDef(**condition.conc_unit.model_dump()),
-                time_unit=EnzML_UnitDef(**time_unit.model_dump()),
+                data_unit=condition.conc_unit.name,
+                time_unit=time_unit.name,
                 data_type=DataTypes.CONCENTRATION,
             )
 
     @staticmethod
-    def map_protein(protein: Protein, vessel_id: str) -> pe.Protein:
+    def map_protein(protein: Protein) -> pe.Protein:
         if protein.ld_id_url:
             return pe.Protein(
                 id=protein.id,
@@ -374,7 +359,6 @@ class Plate_to_EnzymeMLDocument:
                 name=protein.name,
                 constant=protein.constant,
                 sequence=protein.sequence,
-                vessel_id=vessel_id,
             )
         else:
             return pe.Protein(
@@ -382,22 +366,19 @@ class Plate_to_EnzymeMLDocument:
                 name=protein.name,
                 constant=protein.constant,
                 sequence=protein.sequence,
-                vessel_id=vessel_id,
             )
 
     @staticmethod
-    def map_small_molecule(molecule: Molecule, vessel_id: str) -> pe.SmallMolecule:
+    def map_small_molecule(molecule: Molecule) -> pe.SmallMolecule:
         if molecule.ld_id_url:
             return pe.SmallMolecule(
                 id=molecule.id,
                 ld_id=molecule.ld_id_url,
                 name=molecule.name,
                 constant=molecule.constant,
-                vessel_id=vessel_id,
             )
         else:
             return pe.SmallMolecule(
-                vessel_id=vessel_id,
                 id=molecule.id,
                 name=molecule.name,
                 constant=molecule.constant,

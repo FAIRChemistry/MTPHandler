@@ -1,12 +1,9 @@
 import re
 
-from calipytion.model import Standard
-from calipytion.model import UnitDefinition as CalUnit
+from calipytion.model import Calibration
 from calipytion.tools.calibrator import Calibrator
-from calipytion.units import C
+from mdmodels.units.annotation import UnitDefinitionAnnot
 from pydantic import BaseModel, ConfigDict, Field
-
-from mtphandler.model import UnitDefinition
 
 
 class Molecule(BaseModel):
@@ -24,7 +21,7 @@ class Molecule(BaseModel):
     name: str = Field(
         description="Name of the molecule",
     )
-    standard: Standard | None = Field(
+    standard: Calibration | None = Field(
         description="Standard instance associated with the molecule", default=None
     )
     constant: bool = Field(
@@ -66,7 +63,7 @@ class Molecule(BaseModel):
 
     @classmethod
     def from_standard(
-        cls, standard: Standard, init_conc: float, conc_unit: UnitDefinition
+        cls, standard: Calibration, init_conc: float, conc_unit: UnitDefinitionAnnot
     ):
         """Creates a Molecule instance from a Standard instance."""
 
@@ -86,12 +83,12 @@ class Molecule(BaseModel):
         self,
         areas: list[float],
         concs: list[float],
-        conc_unit: UnitDefinition,
+        conc_unit: UnitDefinitionAnnot,
         ph: float,
         temperature: float,
-        temp_unit: CalUnit = C,
+        temp_unit: UnitDefinitionAnnot = "C",
         visualize: bool = True,
-    ) -> Standard:
+    ) -> Calibration:
         """Creates a linear standard from the molecule's calibration data."""
 
         calibrator = Calibrator(
@@ -99,7 +96,7 @@ class Molecule(BaseModel):
             pubchem_cid=self.pubchem_cid,
             molecule_name=self.name,
             concentrations=concs,
-            conc_unit=CalUnit(**conc_unit.model_dump()),
+            conc_unit=conc_unit.name,
             signals=areas,
         )
         calibrator.models = []
@@ -119,7 +116,7 @@ class Molecule(BaseModel):
             model=model,
             ph=ph,
             temperature=temperature,
-            temp_unit=CalUnit(**temp_unit.model_dump()),
+            temp_unit=temp_unit.name,
         )
 
         self.standard = standard

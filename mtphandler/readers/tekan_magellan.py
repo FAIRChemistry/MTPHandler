@@ -9,7 +9,6 @@ import pandas as pd
 
 from mtphandler.model import Plate
 from mtphandler.readers.utils import WELL_ID_PATTERN, id_to_xy
-from mtphandler.units import C, second
 
 
 def read_tekan_magellan(
@@ -60,9 +59,9 @@ def read_tekan_magellan(
 
     plate = Plate(
         date_measured=str(created),
-        temperature_unit=C,
+        temperature_unit="C",
         temperatures=temperatures,
-        time_unit=second,
+        time_unit="s",
         times=times,
     )
 
@@ -81,7 +80,7 @@ def read_tekan_magellan(
         well.add_to_measurements(
             wavelength=wavelength,
             absorption=abso_list,
-            time_unit=second,
+            time_unit="s",
             time=times,
         )
 

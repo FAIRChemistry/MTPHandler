@@ -5,16 +5,16 @@ from collections import defaultdict
 
 import numpy as np
 import pandas as pd
+from mdmodels.units.annotation import UnitDefinitionAnnot
 
-from mtphandler.model import Plate, UnitDefinition
-from mtphandler.units import C, nm
+from mtphandler.model import Plate
 
 
 def read_multiskan_spectrum_1500(
     path: str,
     time: list[float],
-    time_unit: UnitDefinition,
-    temperature_unit: UnitDefinition,
+    time_unit: UnitDefinitionAnnot,
+    temperature_unit: UnitDefinitionAnnot,
     ph: float | None = None,
     temperature: float | None = None,
 ) -> Plate:
@@ -27,7 +27,7 @@ def read_multiskan_spectrum_1500(
             raise ValueError("Could not find pH in path. Please specify 'ph'.")
 
     if not temperature_unit:
-        temperature_unit = C
+        temperature_unit = "C"
 
     if isinstance(time, np.ndarray):
         time = time.tolist()
@@ -76,7 +76,7 @@ def read_multiskan_spectrum_1500(
                 well = [well for well in plate.wells if well.id == id][0]
                 well.add_to_measurements(
                     wavelength=wavelength,
-                    wavelength_unit=nm,
+                    wavelength_unit="nm",
                     absorption=column,
                     time=time,
                     time_unit=time_unit,
@@ -164,7 +164,7 @@ def _get_wavelengths(row: pd.Series):
 
 
 def _coordinates_to_id(x: int, y: int) -> str:
-    return f"{chr(y + 65)}{x+1}"
+    return f"{chr(y + 65)}{x + 1}"
 
 
 def id_to_xy(well_id: str):
@@ -176,7 +176,6 @@ if __name__ == "__main__":
     from devtools import pprint
 
     from mtphandler.model import Plate
-    from mtphandler.units import C, min
 
     path = "docs/examples/data/multiskan_spectrum_1500.txt"
 
@@ -191,8 +190,8 @@ if __name__ == "__main__":
             path=path,
             ph=ph,
             time=time,
-            time_unit=min,
+            time_unit="min",
             temperature=37.0,
-            temperature_unit=C,
+            temperature_unit="C",
         )
     )

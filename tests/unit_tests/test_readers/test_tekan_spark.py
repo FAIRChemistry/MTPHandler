@@ -2,7 +2,6 @@ import pytest
 
 from mtphandler.model import Plate
 from mtphandler.readers import read_tekan_spark
-from mtphandler.units import C
 
 ph = 6.9
 
@@ -18,7 +17,7 @@ def test_read_tekan_spark():
 
     # Assert
     assert isinstance(plate, Plate)
-    assert plate.temperature_unit.name == C.name
+    assert plate.temperature_unit.name == "C"
     assert len(plate.wells) == 45
     assert plate.temperatures[0] == pytest.approx(24.7, rel=1e-2)
 

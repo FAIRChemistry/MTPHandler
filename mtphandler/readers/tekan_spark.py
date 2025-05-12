@@ -7,7 +7,6 @@ from typing_extensions import Optional
 
 from mtphandler.model import Plate
 from mtphandler.readers.utils import id_to_xy
-from mtphandler.units import C, second
 
 
 def read_tekan_spark(
@@ -46,8 +45,8 @@ def read_tekan_spark(
     plate = Plate(
         date_measured=str(time_measured),
         temperatures=temp_series.values.tolist(),
-        temperature_unit=C,
-        time_unit=second,
+        temperature_unit="C",
+        time_unit="s",
         times=time_series.values.tolist(),
     )
 
@@ -65,18 +64,7 @@ def read_tekan_spark(
             wavelength_unit="nm",
             absorption=data_df[column].values.tolist(),
             time=time_series.values.tolist(),
-            time_unit=second,
+            time_unit="s",
         )
 
     return plate
-
-
-if __name__ == "__main__":
-    from devtools import pprint
-
-    path = "/Users/max/Documents/GitHub/MTPHandler/docs/examples/data/tekan_spark.xlsx"
-    from mtphandler.model import Plate
-
-    p = read_tekan_spark(path, 7.4)
-
-    pprint(p.wells[0])
