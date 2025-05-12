@@ -317,16 +317,9 @@ __Requirements structure of the Excel spreadsheet:__
 After the Excel spreadsheet is filled out, the initial concentrations can be assigned to the respective wells using the `assign_init_conditions_from_spreadsheet` method.
 
 !!! example "Assign initial concentrations from Excel spreadsheet"
-    !!! tip "Predefined units"
-        The `mtphandler` comes with predefined units for concentration and time. Units can be imported as shown below:
-        ```python
-        from mtphandler.units import nM, uM, mM, M, second, minute, hour
-        ```
-        Then the units can be used as shown in the example below.
-
     ```python
     plate.assign_init_conditions_from_spreadsheet(
-        conc_unit=uM,
+        conc_unit="umol / l",
         path="data/plate_map_SAHH_kinetics.xlsx",
     )
     ```
