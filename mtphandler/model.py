@@ -1,11 +1,43 @@
+"""
+This file contains Pydantic model definitions for data validation.
+
+Pydantic is a data validation library that uses Python type annotations.
+It allows you to define data models with type hints that are validated
+at runtime while providing static type checking.
+
+Usage example:
+```python
+from my_model import MyModel
+
+# Validates data at runtime
+my_model = MyModel(name="John", age=30)
+
+# Type-safe - my_model has correct type hints
+print(my_model.name)
+
+# Will raise error if validation fails
+try:
+    MyModel(name="", age=30)
+except ValidationError as e:
+    print(e)
+```
+
+For more information see:
+https://docs.pydantic.dev/
+
+WARNING: This is an auto-generated file.
+Do not edit directly - any changes will be overwritten.
+"""
+
+
 ## This is a generated file. Do not modify it manually!
 
 from __future__ import annotations
 
-from enum import Enum
 from typing import Generic, Optional, TypeVar
 from uuid import uuid4
 
+from mdmodels.units.annotation import UnitDefinitionAnnot
 from pydantic import BaseModel, ConfigDict, Field
 
 # Filter Wrapper definition used to filter a list of objects
@@ -74,17 +106,17 @@ def validate_prefix(term: str | dict, prefix: str):
 
 class Plate(BaseModel):
     model_config: ConfigDict = ConfigDict(  # type: ignore
-        validate_assigment=True,
+        validate_assignment=True,
     )  # type: ignore
 
-    temperature_unit: UnitDefinition
-    id: Optional[str] = Field(default=None)
-    name: Optional[str] = Field(default=None)
+    temperature_unit: UnitDefinitionAnnot
+    id: Optional[Optional[str]] = Field(default=None)
+    name: Optional[Optional[str]] = Field(default=None)
     wells: list[Well] = Field(default_factory=list)
-    date_measured: Optional[str] = Field(default=None)
+    date_measured: Optional[Optional[str]] = Field(default=None)
     temperatures: list[float] = Field(default_factory=list)
     times: list[float] = Field(default_factory=list)
-    time_unit: Optional[UnitDefinition] = Field(default=None)
+    time_unit: Optional[Optional[UnitDefinitionAnnot]] = Field(default=None)
 
     # JSON-LD fields
     ld_id: str = Field(
@@ -142,9 +174,9 @@ class Plate(BaseModel):
             AssertionError: If the attribute is not found in the model
         """
 
-        assert (
-            attr in self.model_fields
-        ), f"Attribute {attr} not found in {self.__class__.__name__}"
+        assert attr in self.model_fields, (
+            f"Attribute {attr} not found in {self.__class__.__name__}"
+        )
 
         if prefix:
             validate_prefix(term, prefix)
@@ -189,7 +221,7 @@ class Plate(BaseModel):
         init_conditions: list[InitCondition] = [],
         measurements: list[PhotometricMeasurement] = [],
         volume: Optional[float] = None,
-        volume_unit: Optional[UnitDefinition] = None,
+        volume_unit: Optional[UnitDefinitionAnnot] = None,
         **kwargs,
     ):
         params = {
@@ -213,17 +245,17 @@ class Plate(BaseModel):
 
 class Well(BaseModel):
     model_config: ConfigDict = ConfigDict(  # type: ignore
-        validate_assigment=True,
+        validate_assignment=True,
     )  # type: ignore
 
     id: str
     x_pos: int
     y_pos: int
-    ph: Optional[float] = Field(default=None)
+    ph: Optional[Optional[float]] = Field(default=None)
     init_conditions: list[InitCondition] = Field(default_factory=list)
     measurements: list[PhotometricMeasurement] = Field(default_factory=list)
-    volume: Optional[float] = Field(default=None)
-    volume_unit: Optional[UnitDefinition] = Field(default=None)
+    volume: Optional[Optional[float]] = Field(default=None)
+    volume_unit: Optional[Optional[UnitDefinitionAnnot]] = Field(default=None)
 
     # JSON-LD fields
     ld_id: str = Field(
@@ -295,9 +327,9 @@ class Well(BaseModel):
             AssertionError: If the attribute is not found in the model
         """
 
-        assert (
-            attr in self.model_fields
-        ), f"Attribute {attr} not found in {self.__class__.__name__}"
+        assert attr in self.model_fields, (
+            f"Attribute {attr} not found in {self.__class__.__name__}"
+        )
 
         if prefix:
             validate_prefix(term, prefix)
@@ -337,7 +369,7 @@ class Well(BaseModel):
         self,
         species_id: str,
         init_conc: float,
-        conc_unit: UnitDefinition,
+        conc_unit: UnitDefinitionAnnot,
         **kwargs,
     ):
         params = {
@@ -356,7 +388,7 @@ class Well(BaseModel):
     def add_to_measurements(
         self,
         wavelength: float,
-        time_unit: UnitDefinition,
+        time_unit: UnitDefinitionAnnot,
         absorption: list[float] = [],
         time: list[float] = [],
         blank_states: list[BlankState] = [],
@@ -380,11 +412,11 @@ class Well(BaseModel):
 
 class PhotometricMeasurement(BaseModel):
     model_config: ConfigDict = ConfigDict(  # type: ignore
-        validate_assigment=True,
+        validate_assignment=True,
     )  # type: ignore
 
     wavelength: float
-    time_unit: UnitDefinition
+    time_unit: UnitDefinitionAnnot
     absorption: list[float] = Field(default_factory=list)
     time: list[float] = Field(default_factory=list)
     blank_states: list[BlankState] = Field(default_factory=list)
@@ -446,9 +478,9 @@ class PhotometricMeasurement(BaseModel):
             AssertionError: If the attribute is not found in the model
         """
 
-        assert (
-            attr in self.model_fields
-        ), f"Attribute {attr} not found in {self.__class__.__name__}"
+        assert attr in self.model_fields, (
+            f"Attribute {attr} not found in {self.__class__.__name__}"
+        )
 
         if prefix:
             validate_prefix(term, prefix)
@@ -505,12 +537,12 @@ class PhotometricMeasurement(BaseModel):
 
 class InitCondition(BaseModel):
     model_config: ConfigDict = ConfigDict(  # type: ignore
-        validate_assigment=True,
+        validate_assignment=True,
     )  # type: ignore
 
     species_id: str
     init_conc: float
-    conc_unit: UnitDefinition
+    conc_unit: UnitDefinitionAnnot
 
     # JSON-LD fields
     ld_id: str = Field(
@@ -557,9 +589,9 @@ class InitCondition(BaseModel):
             AssertionError: If the attribute is not found in the model
         """
 
-        assert (
-            attr in self.model_fields
-        ), f"Attribute {attr} not found in {self.__class__.__name__}"
+        assert attr in self.model_fields, (
+            f"Attribute {attr} not found in {self.__class__.__name__}"
+        )
 
         if prefix:
             validate_prefix(term, prefix)
@@ -598,7 +630,7 @@ class InitCondition(BaseModel):
 
 class BlankState(BaseModel):
     model_config: ConfigDict = ConfigDict(  # type: ignore
-        validate_assigment=True,
+        validate_assignment=True,
     )  # type: ignore
 
     species_id: str
@@ -649,9 +681,9 @@ class BlankState(BaseModel):
             AssertionError: If the attribute is not found in the model
         """
 
-        assert (
-            attr in self.model_fields
-        ), f"Attribute {attr} not found in {self.__class__.__name__}"
+        assert attr in self.model_fields, (
+            f"Attribute {attr} not found in {self.__class__.__name__}"
+        )
 
         if prefix:
             validate_prefix(term, prefix)
@@ -688,260 +720,12 @@ class BlankState(BaseModel):
         self.ld_type.append(term)
 
 
-class UnitDefinition(BaseModel):
-    model_config: ConfigDict = ConfigDict(  # type: ignore
-        validate_assigment=True,
-        use_enum_values=True,
-    )  # type: ignore
-
-    id: Optional[str] = Field(default=None)
-    name: Optional[str] = Field(default=None)
-    base_units: list[BaseUnit] = Field(default_factory=list)
-
-    # JSON-LD fields
-    ld_id: str = Field(
-        serialization_alias="@id",
-        default_factory=lambda: "md:UnitDefinition/" + str(uuid4()),
-    )
-    ld_type: list[str] = Field(
-        serialization_alias="@type",
-        default_factory=lambda: [
-            "md:UnitDefinition",
-        ],
-    )
-    ld_context: dict[str, str | dict] = Field(
-        serialization_alias="@context",
-        default_factory=lambda: {
-            "md": "https://github.com/FAIRChemistry/MTPHandler",
-        },
-    )
-
-    def filter_base_units(self, **kwargs) -> list[BaseUnit]:
-        """Filters the base_units attribute based on the given kwargs
-
-        Args:
-            **kwargs: The attributes to filter by.
-
-        Returns:
-            list[BaseUnit]: The filtered list of BaseUnit objects
-        """
-
-        return FilterWrapper[BaseUnit](self.base_units, **kwargs).filter()
-
-    def set_attr_term(
-        self,
-        attr: str,
-        term: str | dict,
-        prefix: str | None = None,
-        iri: str | None = None,
-    ):
-        """Sets the term for a given attribute in the JSON-LD object
-
-        Example:
-            # Using an IRI term
-            >> obj.set_attr_term("name", "http://schema.org/givenName")
-
-            # Using a prefix and term
-            >> obj.set_attr_term("name", "schema:givenName", "schema", "http://schema.org")
-
-            # Usinng a dictionary term
-            >> obj.set_attr_term("name", {"@id": "http://schema.org/givenName", "@type": "@id"})
-
-        Args:
-            attr (str): The attribute to set the term for
-            term (str | dict): The term to set for the attribute
-
-        Raises:
-            AssertionError: If the attribute is not found in the model
-        """
-
-        assert (
-            attr in self.model_fields
-        ), f"Attribute {attr} not found in {self.__class__.__name__}"
-
-        if prefix:
-            validate_prefix(term, prefix)
-
-        add_namespace(self, prefix, iri)
-        self.ld_context[attr] = term
-
-    def add_type_term(
-        self, term: str, prefix: str | None = None, iri: str | None = None
-    ):
-        """Adds a term to the @type field of the JSON-LD object
-
-        Example:
-            # Using a term
-            >> obj.add_type_term("https://schema.org/Person")
-
-            # Using a prefixed term
-            >> obj.add_type_term("schema:Person", "schema", "https://schema.org/Person")
-
-        Args:
-            term (str): The term to add to the @type field
-            prefix (str, optional): The prefix to use for the term. Defaults to None.
-            iri (str, optional): The IRI to use for the term prefix. Defaults to None.
-
-        Raises:
-            ValueError: If prefix is provided but iri is not
-            ValueError: If iri is provided but prefix is not
-        """
-
-        if prefix:
-            validate_prefix(term, prefix)
-
-        add_namespace(self, prefix, iri)
-        self.ld_type.append(term)
-
-    def add_to_base_units(
-        self,
-        kind: UnitType,
-        exponent: int,
-        multiplier: Optional[float] = None,
-        scale: Optional[float] = None,
-        **kwargs,
-    ):
-        params = {
-            "kind": kind,
-            "exponent": exponent,
-            "multiplier": multiplier,
-            "scale": scale,
-        }
-
-        if "id" in kwargs:
-            params["id"] = kwargs["id"]
-
-        self.base_units.append(BaseUnit(**params))
-
-        return self.base_units[-1]
-
-
-class BaseUnit(BaseModel):
-    model_config: ConfigDict = ConfigDict(  # type: ignore
-        validate_assigment=True,
-        use_enum_values=True,
-    )  # type: ignore
-
-    kind: UnitType
-    exponent: int
-    multiplier: Optional[float] = Field(default=None)
-    scale: Optional[float] = Field(default=None)
-
-    # JSON-LD fields
-    ld_id: str = Field(
-        serialization_alias="@id", default_factory=lambda: "md:BaseUnit/" + str(uuid4())
-    )
-    ld_type: list[str] = Field(
-        serialization_alias="@type",
-        default_factory=lambda: [
-            "md:BaseUnit",
-        ],
-    )
-    ld_context: dict[str, str | dict] = Field(
-        serialization_alias="@context",
-        default_factory=lambda: {
-            "md": "https://github.com/FAIRChemistry/MTPHandler",
-        },
-    )
-
-    def set_attr_term(
-        self,
-        attr: str,
-        term: str | dict,
-        prefix: str | None = None,
-        iri: str | None = None,
-    ):
-        """Sets the term for a given attribute in the JSON-LD object
-
-        Example:
-            # Using an IRI term
-            >> obj.set_attr_term("name", "http://schema.org/givenName")
-
-            # Using a prefix and term
-            >> obj.set_attr_term("name", "schema:givenName", "schema", "http://schema.org")
-
-            # Usinng a dictionary term
-            >> obj.set_attr_term("name", {"@id": "http://schema.org/givenName", "@type": "@id"})
-
-        Args:
-            attr (str): The attribute to set the term for
-            term (str | dict): The term to set for the attribute
-
-        Raises:
-            AssertionError: If the attribute is not found in the model
-        """
-
-        assert (
-            attr in self.model_fields
-        ), f"Attribute {attr} not found in {self.__class__.__name__}"
-
-        if prefix:
-            validate_prefix(term, prefix)
-
-        add_namespace(self, prefix, iri)
-        self.ld_context[attr] = term
-
-    def add_type_term(
-        self, term: str, prefix: str | None = None, iri: str | None = None
-    ):
-        """Adds a term to the @type field of the JSON-LD object
-
-        Example:
-            # Using a term
-            >> obj.add_type_term("https://schema.org/Person")
-
-            # Using a prefixed term
-            >> obj.add_type_term("schema:Person", "schema", "https://schema.org/Person")
-
-        Args:
-            term (str): The term to add to the @type field
-            prefix (str, optional): The prefix to use for the term. Defaults to None.
-            iri (str, optional): The IRI to use for the term prefix. Defaults to None.
-
-        Raises:
-            ValueError: If prefix is provided but iri is not
-            ValueError: If iri is provided but prefix is not
-        """
-
-        if prefix:
-            validate_prefix(term, prefix)
-
-        add_namespace(self, prefix, iri)
-        self.ld_type.append(term)
-
-
-class UnitType(Enum):
-    AMPERE = "ampere"
-    AVOGADRO = "avogadro"
-    BECQUEREL = "becquerel"
-    CANDELA = "candela"
-    CELSIUS = "celsius"
-    COULOMB = "coulomb"
-    DIMENSIONLESS = "dimensionless"
-    FARAD = "farad"
-    GRAM = "gram"
-    GRAY = "gray"
-    HENRY = "henry"
-    HERTZ = "hertz"
-    ITEM = "item"
-    JOULE = "joule"
-    KATAL = "katal"
-    KELVIN = "kelvin"
-    KILOGRAM = "kilogram"
-    LITRE = "litre"
-    LUMEN = "lumen"
-    LUX = "lux"
-    METRE = "metre"
-    MOLE = "mole"
-    NEWTON = "newton"
-    OHM = "ohm"
-    PASCAL = "pascal"
-    RADIAN = "radian"
-    SECOND = "second"
-    SIEMENS = "siemens"
-    SIEVERT = "sievert"
-    STERADIAN = "steradian"
-    TESLA = "tesla"
-    VOLT = "volt"
-    WATT = "watt"
-    WEBER = "weber"
+# Rebuild all the classes within this file
+for cls in [
+    Plate,
+    Well,
+    PhotometricMeasurement,
+    InitCondition,
+    BlankState,
+]:
+    cls.model_rebuild()

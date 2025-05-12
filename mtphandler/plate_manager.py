@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 from calipytion import Calibrator
 from loguru import logger
+from mdmodels.units.annotation import UnitDefinitionAnnot
 from pydantic import BaseModel, Field, model_validator
 from pyenzyme import EnzymeMLDocument
 from rich import print
@@ -17,7 +18,6 @@ from mtphandler.model import (
     BlankState,
     PhotometricMeasurement,
     Plate,
-    UnitDefinition,
     Well,
 )
 from mtphandler.molecule import Molecule, Protein
@@ -29,7 +29,6 @@ from mtphandler.tools import (
     pubchem_request_molecule_name,
     well_contains_species,
 )
-from mtphandler.units import C
 from mtphandler.visualize import visualize_plate
 
 ASSIGN_CASE = Literal["rows", "columns", "all", "all except"]
@@ -242,7 +241,7 @@ class PlateManager(BaseModel):
         self,
         species: Molecule | Protein,
         init_conc: float | list[float],
-        conc_unit: UnitDefinition,
+        conc_unit: UnitDefinitionAnnot,
         to: ASSIGN_CASE,
         ids: Optional[str | int | list[str] | list[int]] = None,
         contributes_to_signal: Optional[bool] = None,
@@ -263,7 +262,7 @@ class PlateManager(BaseModel):
         Args:
             species (Molecule | Protein): The species to assign to the wells.
             init_conc (float | list[float]): The initial concentration(s) of the species.
-            conc_unit (UnitDefinition): The unit of concentration.
+            conc_unit (UnitDefinitionAnnot): The unit of concentration.
             to (ASSIGN_CASE): The target location(s) for assigning the species. It should be one of the allowed cases.
             ids (str | int | list[str] | list[int], optional): The ID(s) of the target wells, rows, or columns. Defaults to None.
             contributes_to_signal (bool, optional): Indicates if the assigned species contributes to the signal.
@@ -363,7 +362,7 @@ class PlateManager(BaseModel):
         self,
         species: Molecule | Protein,
         init_conc: float,
-        conc_unit: UnitDefinition,
+        conc_unit: UnitDefinitionAnnot,
         contributes_to_signal: bool | None,
         silent: bool,
     ):
@@ -421,7 +420,7 @@ class PlateManager(BaseModel):
         column_ids: list[int],
         species: Molecule | Protein,
         init_concs: list[float],
-        conc_unit: UnitDefinition,
+        conc_unit: UnitDefinitionAnnot,
         contributes_to_signal: bool | None,
         silent: bool,
     ):
@@ -470,7 +469,7 @@ class PlateManager(BaseModel):
         row_ids: list[str],
         species: Molecule | Protein,
         init_concs: list[float],
-        conc_unit: UnitDefinition,
+        conc_unit: UnitDefinitionAnnot,
         contributes_to_signal: bool | None,
         silent: bool,
     ):
@@ -513,7 +512,7 @@ class PlateManager(BaseModel):
         well_ids: list[str],
         species: Molecule | Protein,
         init_conc: float,
-        conc_unit: UnitDefinition,
+        conc_unit: UnitDefinitionAnnot,
         contributes_to_signal: bool | None,
         silent: bool,
     ):
@@ -599,7 +598,7 @@ class PlateManager(BaseModel):
 
     def assign_init_conditions_from_spreadsheet(
         self,
-        conc_unit: UnitDefinition,
+        conc_unit: UnitDefinitionAnnot,
         path: str,
         header: int = 0,
         index: int = 0,
@@ -622,7 +621,7 @@ class PlateManager(BaseModel):
                 during the reaction.
 
         Args:
-            conc_unit (UnitDefinition): The unit of concentration.
+            conc_unit (UnitDefinitionAnnot): The unit of concentration.
             path (str): Path to the Excel spreadsheet.
             header (int, optional): Row to use as the column names. Defaults to 0.
             index (int, optional): Column to use as the row labels. Defaults to 0.
@@ -873,6 +872,7 @@ class PlateManager(BaseModel):
         self,
         species: Molecule | Protein,
         wavelength: float | None = None,
+        control_wells: list[str] = [],
         silent: bool = False,
     ):
         """Blank the signal contribution of a species at a given wavelength.
@@ -881,6 +881,8 @@ class PlateManager(BaseModel):
         Args:
             species (Molecule | Protein): The species to blank.
             wavelength (float): The wavelength at which to blank the species.
+            control_wells (list[str] | None, optional): List of well ids that are used to calculate the absorption contribution of the species.
+                Defaults to None.
             silent (bool, optional): If True, no output is printed. Defaults to False.
 
         Raises:
@@ -890,9 +892,13 @@ class PlateManager(BaseModel):
         if wavelength is None:
             wavelength = self._handle_wavelength()
 
-        blanking_wells = self._find_blanking_wells(
-            target=species, wavelength=wavelength
-        )
+        if not control_wells:
+            blanking_wells = self._find_blanking_wells(
+                target=species, wavelength=wavelength
+            )
+        else:
+            blanking_wells = [self.get_well(well_id) for well_id in control_wells]
+
         if not blanking_wells:
             logger.warning(
                 f"No wells found to calculate the absorption contribution of the species {species.name} ({species.id}). Was the species already blanked?"
@@ -1111,9 +1117,9 @@ class PlateManager(BaseModel):
         cls,
         path: str,
         time: list[float],
-        time_unit: UnitDefinition,
+        time_unit: UnitDefinitionAnnot,
         temperature: float,
-        temperature_unit: UnitDefinition = C,
+        temperature_unit: UnitDefinitionAnnot = "C",
         ph: float | None = None,
         name: str | None = None,
     ) -> PlateManager:
@@ -1123,9 +1129,9 @@ class PlateManager(BaseModel):
             name (str): Name of the plate.
             path (str): Path to the Multiskan Spectrum 1500 file.
             time (list[float]): List of time points.
-            time_unit (UnitDefinition): Unit of time.
+            time_unit (UnitDefinitionAnnot): Unit of time.
             temperature (float): Temperature of the measurements.
-            temperature_unit (UnitDefinition, optional): Unit of temperature. Defaults to C.
+            temperature_unit (UnitDefinitionAnnot, optional): Unit of temperature. Defaults to C.
             ph (float | None, optional): The pH value of the measurements. Defaults to None.
 
         Returns:
@@ -1236,7 +1242,7 @@ class PlateManager(BaseModel):
         temperature: float,
         ph: float | None = None,
         name: str | None = None,
-        temperature_unit: UnitDefinition = C,
+        temperature_unit: UnitDefinitionAnnot = "C",
     ) -> PlateManager:
         """Read a `*.xlsx` file exported from a new device and create a PlateManager object.
 
@@ -1245,7 +1251,7 @@ class PlateManager(BaseModel):
             temperature (float): The temperature of the measurements.
             ph (float | None, optional): The pH value of the measurements. Defaults to None.
             name (str | None, optional): Name of the plate. Defaults to None.
-            temperature_unit (UnitDefinition, optional): Unit of temperature. Defaults to C.
+            temperature_unit (UnitDefinitionAnnot, optional): Unit of temperature. Defaults to C.
 
         Returns:
             PlateManager: PlateManager object.
@@ -1291,22 +1297,3 @@ class PlateManager(BaseModel):
             data["name"] = name
 
         return cls(**data)
-
-
-if __name__ == "__main__":
-    from devtools import pprint
-
-    from mtphandler.units import mM
-
-    path = "docs/examples/data/ BioTek_Epoch2.xlsx"
-
-    p = PlateManager.read_biotek(path)
-    p.config_logger(log_path="app.log", level="DEBUG", to_stdout=True)
-    p.define_molecule("alc", 123)
-    p.define_molecule("ala", 124)
-    p.define_protein("asd", "adfaddf")
-    # p.visualize()
-
-    p.create_assignment_spreadsheet()
-    p.assign_init_conditions_from_spreadsheet(conc_unit=mM, path="assignment.xlsx")
-    pprint(p.get_well("B2").ph)

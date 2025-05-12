@@ -3,17 +3,17 @@ from __future__ import annotations
 import re
 
 import pandas as pd
+from mdmodels.units.annotation import UnitDefinitionAnnot
 
-from mtphandler.model import Plate, UnitDefinition
+from mtphandler.model import Plate
 from mtphandler.readers.utils import id_to_xy
-from mtphandler.units import second
 
 
 def read_new_device(
     path: str,
     ph: float | None,
     temperature: list[float],
-    temperature_unit: UnitDefinition,
+    temperature_unit: UnitDefinitionAnnot,
 ) -> Plate:
     pattern = r"\(([A-H][0-9]{2})\)"
 
@@ -49,7 +49,7 @@ def handle_timecourse_read(
     path: str,
     name: str,
     timestamp: str,
-    temperature_unit: UnitDefinition,
+    temperature_unit: UnitDefinitionAnnot,
     wavelength: float,
     ph: float | None,
     pattern: str,
@@ -84,7 +84,7 @@ def handle_timecourse_read(
                 wavelength=wavelength,
                 absorption=df[column].values.tolist(),
                 time=time,
-                time_unit=second,
+                time_unit="s",
             )
 
     return plate
@@ -95,7 +95,7 @@ def handle_endpoint_read(
     path: str,
     name: str,
     timestamp: str,
-    temperature_unit: UnitDefinition,
+    temperature_unit: UnitDefinitionAnnot,
     wavelength: float,
     ph: float | None,
     pattern: str,
@@ -145,7 +145,7 @@ def handle_endpoint_read(
                 wavelength=wavelength,
                 absorption=[absorption_df.iloc[row_id, column_id]],
                 time=[0],
-                time_unit=second,
+                time_unit="s",
             )
 
     return plate
@@ -153,11 +153,10 @@ def handle_endpoint_read(
 
 if __name__ == "__main__":
     path = "docs/examples/data/new_device_calib.xlsx"
-    from mtphandler.units import C
 
     plate = read_new_device(
         path=path,
         ph=7.4,
         temperature=[37.0],
-        temperature_unit=C,
+        temperature_unit="C",
     )

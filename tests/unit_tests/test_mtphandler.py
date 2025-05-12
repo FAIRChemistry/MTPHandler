@@ -4,7 +4,6 @@ import pytest
 from mtphandler import PlateManager
 from mtphandler.model import Plate
 from mtphandler.molecule import Molecule
-from mtphandler.units import C, mmol, s, ul
 
 
 # create an artificaial plate with some wells and species
@@ -34,9 +33,9 @@ def setup_handler() -> tuple[PlateManager, Plate]:
         id="ID123",
         name="Test Plate",
         date_measured="2021-01-01 12:00:00",
-        temperature_unit=C,
+        temperature_unit="C",
         temperatures=[37.0] * 12,
-        time_unit=s,
+        time_unit="s",
         times=np.arange(0, 12, 1).tolist(),
     )
     w1 = plate.add_to_wells(
@@ -45,7 +44,7 @@ def setup_handler() -> tuple[PlateManager, Plate]:
         y_pos=0,
         ph=7.0,
         volume=100,
-        volume_unit=ul,
+        volume_unit="ul",
     )
 
     w2 = plate.add_to_wells(
@@ -54,7 +53,7 @@ def setup_handler() -> tuple[PlateManager, Plate]:
         y_pos=1,
         ph=7.7,
         volume=200,
-        volume_unit=ul,
+        volume_unit="ul",
     )
 
     w3 = plate.add_to_wells(
@@ -63,7 +62,7 @@ def setup_handler() -> tuple[PlateManager, Plate]:
         y_pos=0,
         ph=8.0,
         volume=300,
-        volume_unit=ul,
+        volume_unit="ul",
     )
 
     wells = [w1, w2, w3]
@@ -72,7 +71,7 @@ def setup_handler() -> tuple[PlateManager, Plate]:
         well.add_to_measurements(
             wavelength=600,
             absorption=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2],
-            time_unit=s,
+            time_unit="s",
             time=np.arange(0, 12, 1).tolist(),
         )
 
@@ -86,26 +85,26 @@ def test_add_well(setup_handler):
 
     # Test adding a new well
     well = handler.plate.add_to_wells(
-        id="C3", x_pos=2, y_pos=2, ph=7.5, volume=400, volume_unit=ul
+        id="C3", x_pos=2, y_pos=2, ph=7.5, volume=400, volume_unit="ul"
     )
     assert well.id == "C3"
     assert well.x_pos == 2
     assert well.y_pos == 2
     assert well.ph == 7.5
     assert well.volume == 400
-    assert well.volume_unit == ul
+    assert well.volume_unit.name == "ul"
     assert len(plate.wells) == 4
 
     # test adding measurements to the well
     well.add_to_measurements(
         wavelength=600,
         absorption=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2],
-        time_unit=s,
+        time_unit="s",
         time=np.arange(0, 12, 1).tolist(),
     )
     assert len(well.measurements) == 1
     assert well.measurements[0].wavelength == 600
-    assert well.measurements[0].time_unit == s
+    assert well.measurements[0].time_unit.name == "s"
     assert well.measurements[0].time == np.arange(0, 12, 1).tolist()
     assert well.measurements[0].absorption == [
         0.1,
@@ -136,7 +135,7 @@ def test_assing_to_all_wells(setup_handler, get_molecule, get_other_molecule):
     handler._assign_to_all(
         species=mol1,
         init_conc=1.2,
-        conc_unit=mmol,
+        conc_unit="mmol / l",
         contributes_to_signal=None,
         silent=False,
     )
@@ -150,7 +149,7 @@ def test_assing_to_all_wells(setup_handler, get_molecule, get_other_molecule):
     handler._assign_to_all(
         species=mol2,
         init_conc=0,
-        conc_unit=mmol,
+        conc_unit="mmol / l",
         contributes_to_signal=None,
         silent=False,
     )
@@ -176,7 +175,7 @@ def test_assign_to_columns(setup_handler, get_molecule, get_other_molecule):
     handler._assign_to_columns(
         species=mol1,
         init_concs=[1, 2],
-        conc_unit=mmol,
+        conc_unit="mmol / l",
         contributes_to_signal=None,
         column_ids=[1],
         silent=False,
@@ -200,7 +199,7 @@ def test_assign_to_columns(setup_handler, get_molecule, get_other_molecule):
     handler._assign_to_columns(
         species=mol2,
         init_concs=[12],
-        conc_unit=mmol,
+        conc_unit="mmol / l",
         contributes_to_signal=None,
         column_ids=[9],
         silent=False,
@@ -219,7 +218,7 @@ def test_assign_to_columns(setup_handler, get_molecule, get_other_molecule):
         handler._assign_to_columns(
             species=mol1,
             init_concs=[1, 2],
-            conc_unit=mmol,
+            conc_unit="mmol / l",
             contributes_to_signal=None,
             column_ids=[2],
             silent=False,

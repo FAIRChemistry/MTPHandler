@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mtphandler"
-version = "0.2.15"
+version = "0.2.16"
 description = "Python package for processing, enriching, and converting microtiter plate data into standardized EnzymeML time-course data, ready for data science."
 authors = ["haeussma <83341109+haeussma@users.noreply.github.com>"]
 license = "MIT License"
@@ -19,6 +19,7 @@ calipytion = { git = "https://github.com/FAIRChemistry/CaliPytion.git"}
 rich = "^13.7.1"
 httpx = ">=0.27.2"
 loguru = "^0.7.3"
+mdmodels = "^0.2.0"
 
 [tool.poetry.group.dev.dependencies]
 mkdocs-material = "^9.5.7"

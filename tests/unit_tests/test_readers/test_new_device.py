@@ -1,5 +1,4 @@
 from mtphandler.readers import read_new_device
-from mtphandler.units import C
 
 
 def test_new_reader_kinetic():
@@ -9,7 +8,7 @@ def test_new_reader_kinetic():
         path=path,
         ph=7.4,
         temperature=[37.0],
-        temperature_unit=C,
+        temperature_unit="C",
     )
 
     assert len(plate.wells) == 72
@@ -30,7 +29,7 @@ def test_new_reader_endpoint():
         path=path,
         ph=7.4,
         temperature=[37.0],
-        temperature_unit=C,
+        temperature_unit="C",
     )
 
     assert len(plate.wells) == 42

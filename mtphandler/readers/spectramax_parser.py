@@ -5,15 +5,14 @@ from datetime import datetime
 
 import numpy as np
 import pandas as pd
-from pyenzyme.model import UnitDefinition
+from mdmodels.units.annotation import UnitDefinitionAnnot
 
 from mtphandler.model import Plate, Well
-from mtphandler.units import C, nm
 
 
 def read_spectramax(
     path: str,
-    time_unit: UnitDefinition,
+    time_unit: UnitDefinitionAnnot,
     ph: float | None = None,
 ):
     df = pd.read_csv(
@@ -97,9 +96,10 @@ def read_spectramax(
             for wavelength_id, wavelength in enumerate(column):
                 well.add_to_measurements(
                     wavelength=wavelengths[wavelength_id],
-                    wavelength_unit=nm,
+                    wavelength_unit="nm",
                     absorption=wavelength.tolist(),
                     time=times,
+                    time_unit=time_unit,
                 )
             wells.append(well)
 
@@ -108,7 +108,7 @@ def read_spectramax(
         date_measured=created,
         time_unit=time_unit,
         temperatures=temperatures,
-        temperature_unit=C,
+        temperature_unit="C",
         wells=wells,
     )
 
@@ -116,12 +116,4 @@ def read_spectramax(
 
 
 def _coordinates_to_id(x: int, y: int) -> str:
-    return f"{chr(y + 65)}{x+1}"
-
-
-if __name__ == "__main__":
-    from mtphandler.units import s
-
-    path = "tests/data/ABTS_EnzymeML_340nm_420nm_2.5x_pH3_25deg.txt"
-
-    print(read_spectramax(path, ph=6.9, time_unit=s))
+    return f"{chr(y + 65)}{x + 1}"

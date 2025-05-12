@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from calipytion import Calibrator
-from calipytion.model import Sample, Standard, UnitDefinition
+from calipytion.model import Calibration, Sample
+
 from mtphandler.model import Plate, Well
 from mtphandler.molecule import Molecule
 from mtphandler.tools import (
@@ -83,7 +84,7 @@ def map_to_standard(
     molecule: Molecule,
     protein_ids: list[str],
     wavelength: float,
-) -> Standard:
+) -> Calibration:
     standard_wells = _get_standard_wells(
         plate=plate,
         protein_ids=protein_ids,
@@ -103,7 +104,7 @@ def map_to_standard(
             Sample(
                 id=well.id,
                 concentration=condition.init_conc,
-                conc_unit=UnitDefinition(**condition.conc_unit.model_dump()),
+                conc_unit=condition.conc_unit.name,
                 signal=float(measurement.absorption[0]),
             )
         )
@@ -116,8 +117,6 @@ def map_to_standard(
         )
     ph = phs[0]
 
-    temp_unit = UnitDefinition(**plate.temperature_unit.model_dump())
-
     # print lowest and highest signal
     print(
         min([sample.signal for sample in samples]),
@@ -126,7 +125,7 @@ def map_to_standard(
     )
 
     # Create standard
-    return Standard(
+    return Calibration(
         molecule_id=molecule.id,
         molecule_symbol=molecule.id,
         pubchem_cid=molecule.pubchem_cid,
@@ -135,7 +134,7 @@ def map_to_standard(
         samples=samples,
         ph=ph,
         temperature=plate.temperatures[0],
-        temp_unit=temp_unit,
+        temp_unit=plate.temperature_unit.name,
     )
 
 

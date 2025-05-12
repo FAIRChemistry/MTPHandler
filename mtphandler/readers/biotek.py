@@ -9,7 +9,6 @@ import pandas as pd
 from mtphandler.model import Plate
 from mtphandler.readers.utils import id_to_xy
 from mtphandler.tools import get_well
-from mtphandler.units import C, second
 
 PATTERN_WAVELENGTH = r"Wavelengths:\s+(\d{1,4})([\s,;]+\d{1,4})*"
 
@@ -70,8 +69,8 @@ def read_biotek(
 
     plate = Plate(
         date_measured=timestamp,
-        time_unit=second,
-        temperature_unit=C,
+        time_unit="s",
+        temperature_unit="C",
     )
 
     for row_index, (block_start, wavelength) in enumerate(
@@ -114,7 +113,7 @@ def read_biotek(
                 wavelength=wavelength,
                 absorption=data,
                 time=time,
-                time_unit=second,
+                time_unit="s",
             )
 
             plate.temperatures = temperature.tolist()
