@@ -14,10 +14,10 @@ def test_new_reader_kinetic():
     assert len(plate.wells) == 72
     assert plate.wells[0].x_pos == 0
     assert plate.wells[0].y_pos == 0
-    assert plate.wells[0].id == "ArODH0001"
+    assert plate.wells[0].id == "ArODH0001 (A01)"
     assert plate.wells[-1].x_pos == 11
     assert plate.wells[-1].y_pos == 5
-    assert plate.wells[-1].id == "mODH-582"
+    assert plate.wells[-1].id == "mODH-582 DM0018 (F12)"
     assert plate.wells[-1].measurements[0].absorption[0] == 0.5626
     assert plate.wells[-1].measurements[0].absorption[-1] == 0.6376
 

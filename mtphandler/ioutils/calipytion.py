@@ -18,6 +18,7 @@ def _get_standard_wells(
     protein_ids: list[str],
     molecule: Molecule,
     wavelength: float,
+    well_ids: list[str] | None = None,
     silent: bool = False,
 ) -> list[Well]:
     """Goes through the wells and finds suitable standard wells.
@@ -35,9 +36,17 @@ def _get_standard_wells(
     # Subset of wells, that contain specified species, do not contain a protein, and are blanked
 
     # get wells with only one component, that does not contribute to the signal
-    buffer_blank_wells = []
-    standard_wells = []
-    for well in plate.wells:
+    buffer_blank_wells: list[Well] = []
+    standard_wells: list[Well] = []
+
+    # Filter wells by well_ids if provided
+    wells_to_check = (
+        plate.wells
+        if well_ids is None
+        else [well for well in plate.wells if well.id in well_ids]
+    )
+
+    for well in wells_to_check:
         measurement = get_measurement(well, wavelength)
 
         # get all wells with one init condition that has a concentration grater than 0
@@ -84,12 +93,14 @@ def map_to_standard(
     molecule: Molecule,
     protein_ids: list[str],
     wavelength: float,
+    well_ids: list[str] | None = None,
 ) -> Calibration:
     standard_wells = _get_standard_wells(
         plate=plate,
         protein_ids=protein_ids,
         molecule=molecule,
         wavelength=wavelength,
+        well_ids=well_ids,
     )
     print([well.id for well in standard_wells])
 
@@ -117,13 +128,6 @@ def map_to_standard(
         )
     ph = phs[0]
 
-    # print lowest and highest signal
-    print(
-        min([sample.signal for sample in samples]),
-        max([sample.signal for sample in samples]),
-        "lowest and highest signal",
-    )
-
     # Create standard
     return Calibration(
         molecule_id=molecule.id,
@@ -144,6 +148,7 @@ def initialize_calibrator(
     molecule: Molecule,
     protein_ids: list[str],
     cutoff: float | None = None,
+    well_ids: list[str] | None = None,
 ) -> Calibrator:
     """
     Initialize a calibrator for a given species.
@@ -155,12 +160,14 @@ def initialize_calibrator(
         protein_ids (list[str]): IDs of the proteins that catalyze the reaction.
         cutoff (float | None): Cutoff for the calibration. Calibration samples with
             a signal above the cutoff are ignored.
+        well_ids (list[str] | None): The IDs of the wells to use for the calibration. Defaults to None.
     """
     standard = map_to_standard(
         plate=plate,
         protein_ids=protein_ids,
         molecule=molecule,
         wavelength=wavelength,
+        well_ids=well_ids,
     )
 
     return Calibrator.from_standard(standard, cutoff=cutoff)

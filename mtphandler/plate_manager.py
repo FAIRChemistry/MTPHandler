@@ -386,6 +386,7 @@ class PlateManager(BaseModel):
         molecule: Molecule,
         cutoff: float | None = None,
         wavelength: float | None = None,
+        well_ids: list[str] | None = None,
     ) -> Calibrator:
         """Initialize a CaliPytion `Calibrator` for a molecule on the plate.
         The calibrator allows eighter to proceed with predefined suitable calibration models or
@@ -398,6 +399,7 @@ class PlateManager(BaseModel):
                 above the cutoff are not considered for the calibration. Defaults to None.
             wavelength (float | None, optional): The wavelength at which to initialize the calibrator.
                 If only one wavelength was measured, the wavelength is automatically set. Defaults to None.
+            well_ids (list[str] | None, optional): The IDs of the wells to use for the calibration. Defaults to None.
 
         Returns:
             Calibrator: Calibrator object.
@@ -413,6 +415,7 @@ class PlateManager(BaseModel):
             molecule=molecule,
             protein_ids=[protein.id for protein in self.proteins],
             cutoff=cutoff,
+            well_ids=well_ids,
         )
 
     def _assign_to_columns(
@@ -996,13 +999,38 @@ class PlateManager(BaseModel):
         if name is None:
             name = self.name
 
+        # Filter proteins and molecules to only include those present in wells that will be included
+        wells_to_include = (
+            self.plate.wells
+            if well_ids is None
+            else [well for well in self.plate.wells if well.id in well_ids]
+        )
+
+        proteins_in_wells = set()
+        molecules_in_wells = set()
+        for well in wells_to_include:
+            for condition in well.init_conditions:
+                for protein in self.proteins:
+                    if condition.species_id == protein.id:
+                        proteins_in_wells.add(protein.id)
+                for molecule in self.molecules:
+                    if condition.species_id == molecule.id:
+                        molecules_in_wells.add(molecule.id)
+
+        filtered_proteins = [
+            protein for protein in self.proteins if protein.id in proteins_in_wells
+        ]
+        filtered_molecules = [
+            molecule for molecule in self.molecules if molecule.id in molecules_in_wells
+        ]
+
         converter = Plate_to_EnzymeMLDocument(
             name=name,
             plate=self.plate,
             well_ids=well_ids,
-            molecules=self.molecules,
+            molecules=filtered_molecules,
             detected_molecule=detected_molecule,
-            proteins=self.proteins,
+            proteins=filtered_proteins,
             to_concentration=to_concentration,
             extrapolate=extrapolate,
             catalyzed_only=catalyzed_only,
@@ -1261,7 +1289,7 @@ class PlateManager(BaseModel):
         data: dict[str, Any] = {
             "plate": reader(
                 path=path,
-                temperature=[temperature],
+                temperature=temperature,
                 temperature_unit=temperature_unit,
                 ph=ph,
             )
