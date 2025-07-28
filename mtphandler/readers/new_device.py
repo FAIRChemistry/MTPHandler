@@ -12,15 +12,17 @@ from mtphandler.readers.utils import id_to_xy
 def read_new_device(
     path: str,
     ph: float | None,
-    temperature: list[float],
+    temperature: float,
     temperature_unit: UnitDefinitionAnnot,
 ) -> Plate:
     pattern = r"\(([A-H][0-9]{2})\)"
 
     if isinstance(temperature, (int | float)):
-        temperature = [temperature]
+        temperature = [temperature]  # type: ignore
 
     df = pd.read_excel(path)
+
+    print(f"incoming temperatures: {temperature}")
 
     wavelength = float(df.iloc[4, 0].split(" ")[1])
     time_str = df.iloc[1, 0]
@@ -40,6 +42,8 @@ def read_new_device(
         raise ValueError(
             "Could not find 'Reading', 'Abs', or 'Sample' in the DataFrame."
         )
+
+    plate.temperatures = temperature
 
     return plate
 
@@ -74,7 +78,7 @@ def handle_timecourse_read(
             name_id = column.split(" ")[0]
             x, y = id_to_xy(well_id)
             well = plate.add_to_wells(
-                id=name_id,
+                id=column,
                 x_pos=x,
                 y_pos=y,
                 ph=ph,
@@ -157,6 +161,7 @@ if __name__ == "__main__":
     plate = read_new_device(
         path=path,
         ph=7.4,
-        temperature=[37.0],
-        temperature_unit="C",
+        temperature=37.0,
+        temperature_unit="celsius",
     )
+    print(plate.temperatures)
