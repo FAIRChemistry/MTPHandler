@@ -22,8 +22,6 @@ def read_new_device(
 
     df = pd.read_excel(path)
 
-    print(f"incoming temperatures: {temperature}")
-
     wavelength = float(df.iloc[4, 0].split(" ")[1])
     time_str = df.iloc[1, 0]
     timestamp = str(pd.to_datetime(time_str, format="%m/%d/%Y %I:%M:%S %p"))
@@ -137,7 +135,6 @@ def handle_endpoint_read(
                 absorption_df.iloc[row_id, column_id]
             ):
                 continue
-            print(sample_df.iloc[row_id, column_id])
             well = plate.add_to_wells(
                 id=sample_df.iloc[row_id, column_id],
                 x_pos=column_id,
@@ -164,4 +161,3 @@ if __name__ == "__main__":
         temperature=37.0,
         temperature_unit="celsius",
     )
-    print(plate.temperatures)
