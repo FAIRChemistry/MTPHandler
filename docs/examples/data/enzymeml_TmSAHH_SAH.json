@@ -8,123 +8,6 @@
     "vessels": [],
     "proteins": [
         {
-            "id": "McSAHH",
-            "name": "Methanocella conradii SAHH",
-            "constant": true,
-            "sequence": null,
-            "vessel_id": null,
-            "ecnumber": null,
-            "organism": null,
-            "organism_tax_id": null,
-            "references": [],
-            "ld_id": "enzml:Protein/6facd61a-5333-4172-a733-93c53e0a0ccc",
-            "ld_type": [
-                "enzml:Protein",
-                "OBO:PR_000000001"
-            ],
-            "ld_context": {
-                "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
-                "schema": "https://schema.org/",
-                "id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "name": "schema:name",
-                "sequence": "OBO:GSSO_007262",
-                "vessel_id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "organism": "OBO:OBI_0100026",
-                "organism_tax_id": {
-                    "@type": "@id"
-                },
-                "references": {
-                    "@id": "schema:citation",
-                    "@type": "@id"
-                }
-            }
-        },
-        {
-            "id": "MeSAHH",
-            "name": "Methanohalobium evestigatum SAHH",
-            "constant": true,
-            "sequence": null,
-            "vessel_id": null,
-            "ecnumber": null,
-            "organism": null,
-            "organism_tax_id": null,
-            "references": [],
-            "ld_id": "enzml:Protein/707fcfbf-1f81-4fc3-8cfd-22aec5bd3ca6",
-            "ld_type": [
-                "enzml:Protein",
-                "OBO:PR_000000001"
-            ],
-            "ld_context": {
-                "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
-                "schema": "https://schema.org/",
-                "id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "name": "schema:name",
-                "sequence": "OBO:GSSO_007262",
-                "vessel_id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "organism": "OBO:OBI_0100026",
-                "organism_tax_id": {
-                    "@type": "@id"
-                },
-                "references": {
-                    "@id": "schema:citation",
-                    "@type": "@id"
-                }
-            }
-        },
-        {
-            "id": "MiSAHH",
-            "name": "Methanocaldocossus infernus SAHH",
-            "constant": true,
-            "sequence": null,
-            "vessel_id": null,
-            "ecnumber": null,
-            "organism": null,
-            "organism_tax_id": null,
-            "references": [],
-            "ld_id": "enzml:Protein/b12f3206-9ca3-40e5-9fa0-af7b898cb75a",
-            "ld_type": [
-                "enzml:Protein",
-                "OBO:PR_000000001"
-            ],
-            "ld_context": {
-                "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
-                "schema": "https://schema.org/",
-                "id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "name": "schema:name",
-                "sequence": "OBO:GSSO_007262",
-                "vessel_id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "organism": "OBO:OBI_0100026",
-                "organism_tax_id": {
-                    "@type": "@id"
-                },
-                "references": {
-                    "@id": "schema:citation",
-                    "@type": "@id"
-                }
-            }
-        },
-        {
             "id": "MtSAHH",
             "name": "Methanothrix thermoacetophila SAHH",
             "constant": true,
@@ -134,15 +17,15 @@
             "organism": null,
             "organism_tax_id": null,
             "references": [],
-            "ld_id": "enzml:Protein/9f4cbeca-a920-41a4-9b7d-d94210a98c07",
+            "ld_id": "enzml:Protein/3eebdf71-f865-4d03-8cb5-7cf81a07cbca",
             "ld_type": [
                 "enzml:Protein",
                 "OBO:PR_000000001"
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -176,14 +59,14 @@
             "inchikey": null,
             "synonymous_names": [],
             "references": [],
-            "ld_id": "enzml:SmallMolecule/d27c841f-8461-4a25-b6ed-d1fc86b009f5",
+            "ld_id": "enzml:SmallMolecule/06ae2791-fa93-4b89-ac24-707938c5a55c",
             "ld_type": [
                 "enzml:SmallMolecule"
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -201,7 +84,7 @@
         },
         {
             "id": "TNB",
-            "name": "Dithionitrobenzoic Acid",
+            "name": "5,5'-Dithiobis(2-nitrobenzoic Acid)",
             "constant": false,
             "vessel_id": null,
             "canonical_smiles": null,
@@ -215,8 +98,8 @@
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -234,7 +117,7 @@
         },
         {
             "id": "SAH",
-            "name": "S-Adenosylhomocysteine",
+            "name": "Adenosylhomocysteine",
             "constant": false,
             "vessel_id": null,
             "canonical_smiles": null,
@@ -248,41 +131,8 @@
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
-                "id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "name": "schema:name",
-                "vessel_id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "references": {
-                    "@id": "schema:citation",
-                    "@type": "@id"
-                }
-            }
-        },
-        {
-            "id": "SIH",
-            "name": "S-Inosylhomocysteine",
-            "constant": false,
-            "vessel_id": null,
-            "canonical_smiles": null,
-            "inchi": null,
-            "inchikey": null,
-            "synonymous_names": [],
-            "references": [],
-            "ld_id": "https://pubchem.ncbi.nlm.nih.gov/compound/135618563",
-            "ld_type": [
-                "enzml:SmallMolecule"
-            ],
-            "ld_context": {
-                "enzml": "http://www.enzymeml.org/v2/",
                 "OBO": "http://purl.obolibrary.org/obo/",
-                "schema": "https://schema.org/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -300,7 +150,7 @@
         },
         {
             "id": "Hyc",
-            "name": "Homocysteine",
+            "name": "L-Homocysteine",
             "constant": false,
             "vessel_id": null,
             "canonical_smiles": null,
@@ -314,8 +164,8 @@
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -333,7 +183,7 @@
         },
         {
             "id": "DTNB",
-            "name": "Dithionitrobenzoic Acid",
+            "name": "5,5'-Dithiobis(2-nitrobenzoic Acid)",
             "constant": false,
             "vessel_id": null,
             "canonical_smiles": null,
@@ -347,8 +197,8 @@
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -371,108 +221,6 @@
             "id": "E8",
             "name": "photometric measurement",
             "species_data": [
-                {
-                    "species_id": "BUFFER",
-                    "prepared": 50.0,
-                    "initial": 50.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/7fade174-98f3-45cc-a21c-86e2a56c6e26",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
-                {
-                    "species_id": "MtSAHH",
-                    "prepared": 5.0,
-                    "initial": 5.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/5cdb7ecf-fe4f-4ae4-beeb-b9e244a36459",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
                 {
                     "species_id": "TNB",
                     "prepared": 0.0,
@@ -1955,14 +1703,116 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/d6c58b09-fb09-47af-9884-164958c9f14a",
+                    "ld_id": "enzml:MeasurementData/58c87c4e-5bcb-460e-b8b1-9980e31c1b88",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "MtSAHH",
+                    "prepared": 5.0,
+                    "initial": 5.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/2125f99a-63b1-4b4f-a802-68587a1dedb3",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "BUFFER",
+                    "prepared": 50.0,
+                    "initial": 50.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/4d05220f-247e-4038-afa1-ac8df09aabd7",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -1990,14 +1840,14 @@
                     }
                 ]
             },
-            "ld_id": "enzml:Measurement/f2b83f30-eb76-4ca9-95bc-5278a39d7f08",
+            "ld_id": "enzml:Measurement/95f67969-7b93-448a-ac1c-351fef969bf5",
             "ld_type": [
                 "enzml:Measurement"
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -2049,116 +1899,14 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/b6a97d29-9284-4b4c-a881-48eedb22cc2f",
+                    "ld_id": "enzml:MeasurementData/1e53a716-5ee2-4a5a-98ab-d2f6bf27c740",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
-                {
-                    "species_id": "BUFFER",
-                    "prepared": 50.0,
-                    "initial": 50.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/841ea578-4103-43a0-8585-fe166ff7291a",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
                         "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
-                {
-                    "species_id": "MtSAHH",
-                    "prepared": 5.0,
-                    "initial": 5.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/28cc1edc-52a5-4e0d-ae5f-f845019a238e",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -2202,14 +1950,65 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/c9c80521-f4a2-4285-ada1-e42b31083d8c",
+                    "ld_id": "enzml:MeasurementData/8a7fc010-c626-468a-8020-cc5400e9db30",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "SAH",
+                    "prepared": 200.0,
+                    "initial": 200.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/82799cbb-cd57-441b-8bba-f608a1fdc8c2",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -3697,159 +3496,14 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/f2ebf617-d591-4ce3-92d4-02f802524409",
+                    "ld_id": "enzml:MeasurementData/6db5425e-b5a9-4262-b03e-2113093c314f",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
-                {
-                    "species_id": "SAH",
-                    "prepared": 200.0,
-                    "initial": 200.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/3448e762-7814-41e8-9481-a2fd6ce061d8",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
                         "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                }
-            ],
-            "group_id": "",
-            "ph": 7.4,
-            "temperature": 37.04466019417476,
-            "temperature_unit": {
-                "id": "C",
-                "name": "C",
-                "base_units": [
-                    {
-                        "kind": "ampere",
-                        "exponent": 1,
-                        "multiplier": 1.0,
-                        "scale": 0.0
-                    },
-                    {
-                        "kind": "second",
-                        "exponent": 1,
-                        "multiplier": 1.0,
-                        "scale": 0.0
-                    }
-                ]
-            },
-            "ld_id": "enzml:Measurement/8a404566-2413-4d57-b84c-d2f1e620513c",
-            "ld_type": [
-                "enzml:Measurement"
-            ],
-            "ld_context": {
-                "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
-                "schema": "https://schema.org/",
-                "id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "group_id": {
-                    "@type": "@id"
-                }
-            }
-        },
-        {
-            "id": "E9",
-            "name": "photometric measurement",
-            "species_data": [
-                {
-                    "species_id": "BUFFER",
-                    "prepared": 50.0,
-                    "initial": 50.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/4b6d0fda-07b5-430e-824a-3d627985b109",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -3893,19 +3547,113 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/e1c7a695-aac9-4f6b-b76e-c649a2ce88fe",
+                    "ld_id": "enzml:MeasurementData/cf0558fb-2e9a-4b6c-aa11-8125a1d5ebf7",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
                     }
                 },
+                {
+                    "species_id": "BUFFER",
+                    "prepared": 50.0,
+                    "initial": 50.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/eb457866-16c3-4141-9f43-dbe6d14a87c3",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                }
+            ],
+            "group_id": "",
+            "ph": 7.4,
+            "temperature": 37.04466019417476,
+            "temperature_unit": {
+                "id": "C",
+                "name": "C",
+                "base_units": [
+                    {
+                        "kind": "ampere",
+                        "exponent": 1,
+                        "multiplier": 1.0,
+                        "scale": 0.0
+                    },
+                    {
+                        "kind": "second",
+                        "exponent": 1,
+                        "multiplier": 1.0,
+                        "scale": 0.0
+                    }
+                ]
+            },
+            "ld_id": "enzml:Measurement/be82a3fe-2ea4-40df-8580-e28622de7d72",
+            "ld_type": [
+                "enzml:Measurement"
+            ],
+            "ld_context": {
+                "enzml": "http://www.enzymeml.org/v2/",
+                "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
+                "id": {
+                    "@id": "schema:identifier",
+                    "@type": "@id"
+                },
+                "group_id": {
+                    "@type": "@id"
+                }
+            }
+        },
+        {
+            "id": "E9",
+            "name": "photometric measurement",
+            "species_data": [
                 {
                     "species_id": "TNB",
                     "prepared": 0.0,
@@ -5388,14 +5136,116 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/eeff5104-8ca6-48a2-baf7-a19c15c3cdf7",
+                    "ld_id": "enzml:MeasurementData/1b3d4da3-6f2b-4c54-8054-a9e8e5b86b32",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "MtSAHH",
+                    "prepared": 5.0,
+                    "initial": 5.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/5b0d36db-1a0b-4c34-b15f-ed9bcbfc9c87",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "BUFFER",
+                    "prepared": 50.0,
+                    "initial": 50.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/0eeecdc8-6b1f-4ca4-ad5e-b05b74150993",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -5423,14 +5273,14 @@
                     }
                 ]
             },
-            "ld_id": "enzml:Measurement/e5a74bdf-2abb-4529-8ad1-7ff08cbad5d4",
+            "ld_id": "enzml:Measurement/f8f462a5-89f1-4263-87c0-503604195f84",
             "ld_type": [
                 "enzml:Measurement"
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -5482,116 +5332,14 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/f71ae681-e167-49ec-8a36-da396cf30cb3",
+                    "ld_id": "enzml:MeasurementData/33371ca4-60c1-4c2f-a6fa-28f05d5ab4b6",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
-                {
-                    "species_id": "BUFFER",
-                    "prepared": 50.0,
-                    "initial": 50.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/6a9fd051-ffbf-4ec1-b092-3516304346fb",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
                         "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
-                {
-                    "species_id": "MtSAHH",
-                    "prepared": 5.0,
-                    "initial": 5.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/a27cc40a-cb98-44bc-9754-03cc355cf76f",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -5635,14 +5383,65 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/b94b8d8d-e8c1-4622-bb9d-bab4dbe72bd1",
+                    "ld_id": "enzml:MeasurementData/d729c8f0-94bc-49da-aaa7-7b1e1be55c7f",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "SAH",
+                    "prepared": 200.0,
+                    "initial": 200.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/f3f2d1e2-edb1-4218-999e-f0042157b382",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -7130,159 +6929,14 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/5b814361-cf65-44a3-82eb-c66d4f8d65b1",
+                    "ld_id": "enzml:MeasurementData/92c1cdbd-df31-4231-8776-dc789713ffc9",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
-                {
-                    "species_id": "SAH",
-                    "prepared": 200.0,
-                    "initial": 200.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/5cbd414e-55cf-4060-afcc-392c3c723b3c",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
                         "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                }
-            ],
-            "group_id": "",
-            "ph": 7.4,
-            "temperature": 37.04466019417476,
-            "temperature_unit": {
-                "id": "C",
-                "name": "C",
-                "base_units": [
-                    {
-                        "kind": "ampere",
-                        "exponent": 1,
-                        "multiplier": 1.0,
-                        "scale": 0.0
-                    },
-                    {
-                        "kind": "second",
-                        "exponent": 1,
-                        "multiplier": 1.0,
-                        "scale": 0.0
-                    }
-                ]
-            },
-            "ld_id": "enzml:Measurement/4f32f4b5-7e97-4e8c-b20c-ffacd2abce29",
-            "ld_type": [
-                "enzml:Measurement"
-            ],
-            "ld_context": {
-                "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
-                "schema": "https://schema.org/",
-                "id": {
-                    "@id": "schema:identifier",
-                    "@type": "@id"
-                },
-                "group_id": {
-                    "@type": "@id"
-                }
-            }
-        },
-        {
-            "id": "E10",
-            "name": "photometric measurement",
-            "species_data": [
-                {
-                    "species_id": "BUFFER",
-                    "prepared": 50.0,
-                    "initial": 50.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/49526231-b633-4d4d-b241-259d32127176",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -7326,19 +6980,113 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/f4260230-9caa-4a54-8aad-92fcc2ea0820",
+                    "ld_id": "enzml:MeasurementData/0ef8bff1-9965-4169-af7d-efe1c62cc1f7",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
                     }
                 },
+                {
+                    "species_id": "BUFFER",
+                    "prepared": 50.0,
+                    "initial": 50.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/9678c680-79db-4f96-bcd1-12a889ee9d70",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                }
+            ],
+            "group_id": "",
+            "ph": 7.4,
+            "temperature": 37.04466019417476,
+            "temperature_unit": {
+                "id": "C",
+                "name": "C",
+                "base_units": [
+                    {
+                        "kind": "ampere",
+                        "exponent": 1,
+                        "multiplier": 1.0,
+                        "scale": 0.0
+                    },
+                    {
+                        "kind": "second",
+                        "exponent": 1,
+                        "multiplier": 1.0,
+                        "scale": 0.0
+                    }
+                ]
+            },
+            "ld_id": "enzml:Measurement/1106130d-5902-4730-b23c-4207b8744372",
+            "ld_type": [
+                "enzml:Measurement"
+            ],
+            "ld_context": {
+                "enzml": "http://www.enzymeml.org/v2/",
+                "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
+                "id": {
+                    "@id": "schema:identifier",
+                    "@type": "@id"
+                },
+                "group_id": {
+                    "@type": "@id"
+                }
+            }
+        },
+        {
+            "id": "E10",
+            "name": "photometric measurement",
+            "species_data": [
                 {
                     "species_id": "TNB",
                     "prepared": 0.0,
@@ -8821,14 +8569,116 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/383d0a5d-e973-41ac-8d53-a46d24454f77",
+                    "ld_id": "enzml:MeasurementData/6f253f18-1210-4945-9b6f-4bcb313c517b",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "MtSAHH",
+                    "prepared": 5.0,
+                    "initial": 5.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/f01b0319-28f7-4d67-9080-d54159453b36",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "BUFFER",
+                    "prepared": 50.0,
+                    "initial": 50.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/219057e6-522f-42a6-bd20-20fda0d21d36",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -8856,14 +8706,14 @@
                     }
                 ]
             },
-            "ld_id": "enzml:Measurement/7b9f9b28-3a8c-46c9-bd7f-c8dd4f59e957",
+            "ld_id": "enzml:Measurement/c1ce3e1f-0a5f-4525-8ff5-06812db92aa2",
             "ld_type": [
                 "enzml:Measurement"
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -8915,116 +8765,14 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/bd04427f-5288-4066-b992-3124b1012296",
+                    "ld_id": "enzml:MeasurementData/ed44f6f1-3863-47ef-96d0-17a24a50b844",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
-                {
-                    "species_id": "BUFFER",
-                    "prepared": 50.0,
-                    "initial": 50.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/1794261d-319b-4bd8-b288-7b10028a7f27",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
                         "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
-                        "species_id": {
-                            "@type": "@id"
-                        }
-                    }
-                },
-                {
-                    "species_id": "MtSAHH",
-                    "prepared": 5.0,
-                    "initial": 5.0,
-                    "data_unit": {
-                        "id": "umol / l",
-                        "name": "umol / l",
-                        "base_units": [
-                            {
-                                "kind": "mole",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": -6.0
-                            },
-                            {
-                                "kind": "litre",
-                                "exponent": -1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data": [],
-                    "time": [],
-                    "time_unit": {
-                        "id": "s",
-                        "name": "s",
-                        "base_units": [
-                            {
-                                "kind": "second",
-                                "exponent": 1,
-                                "multiplier": 1.0,
-                                "scale": 0.0
-                            }
-                        ]
-                    },
-                    "data_type": "concentration",
-                    "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/8427346b-63bb-4898-8b73-c414c028cfb6",
-                    "ld_type": [
-                        "enzml:MeasurementData"
-                    ],
-                    "ld_context": {
-                        "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
-                        "schema": "https://schema.org/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -9068,14 +8816,65 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/d7a3b5dd-f088-4f10-8002-9ac0a0761242",
+                    "ld_id": "enzml:MeasurementData/ff99708d-0e22-40d2-ad38-7225cda5bb9c",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "SAH",
+                    "prepared": 200.0,
+                    "initial": 200.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/c95df92e-e144-4168-9873-a2f07919a2af",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -10563,23 +10362,23 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/e96b0198-d0fd-4bc1-8cc4-2cda9a50bef0",
+                    "ld_id": "enzml:MeasurementData/32c71d6c-6e7e-4edc-b021-ef817e7c8ba4",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
                     }
                 },
                 {
-                    "species_id": "SAH",
-                    "prepared": 200.0,
-                    "initial": 200.0,
+                    "species_id": "MtSAHH",
+                    "prepared": 5.0,
+                    "initial": 5.0,
                     "data_unit": {
                         "id": "umol / l",
                         "name": "umol / l",
@@ -10614,14 +10413,65 @@
                     },
                     "data_type": "concentration",
                     "is_simulated": false,
-                    "ld_id": "enzml:MeasurementData/58e1ee82-6d02-4e35-abf7-16be65220ee2",
+                    "ld_id": "enzml:MeasurementData/80c0b15b-d9dd-429e-b79d-736b5e8ccd5d",
                     "ld_type": [
                         "enzml:MeasurementData"
                     ],
                     "ld_context": {
                         "enzml": "http://www.enzymeml.org/v2/",
-                        "OBO": "http://purl.obolibrary.org/obo/",
                         "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
+                        "species_id": {
+                            "@type": "@id"
+                        }
+                    }
+                },
+                {
+                    "species_id": "BUFFER",
+                    "prepared": 50.0,
+                    "initial": 50.0,
+                    "data_unit": {
+                        "id": "umol / l",
+                        "name": "umol / l",
+                        "base_units": [
+                            {
+                                "kind": "mole",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": -6.0
+                            },
+                            {
+                                "kind": "litre",
+                                "exponent": -1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data": [],
+                    "time": [],
+                    "time_unit": {
+                        "id": "s",
+                        "name": "s",
+                        "base_units": [
+                            {
+                                "kind": "second",
+                                "exponent": 1,
+                                "multiplier": 1.0,
+                                "scale": 0.0
+                            }
+                        ]
+                    },
+                    "data_type": "concentration",
+                    "is_simulated": false,
+                    "ld_id": "enzml:MeasurementData/2a175381-b391-4855-aeea-ad01f341709d",
+                    "ld_type": [
+                        "enzml:MeasurementData"
+                    ],
+                    "ld_context": {
+                        "enzml": "http://www.enzymeml.org/v2/",
+                        "schema": "https://schema.org/",
+                        "OBO": "http://purl.obolibrary.org/obo/",
                         "species_id": {
                             "@type": "@id"
                         }
@@ -10649,14 +10499,14 @@
                     }
                 ]
             },
-            "ld_id": "enzml:Measurement/83240089-d7b4-427d-b31c-6e6cc1f82cd4",
+            "ld_id": "enzml:Measurement/6731633d-be81-485c-affa-059c412d1177",
             "ld_type": [
                 "enzml:Measurement"
             ],
             "ld_context": {
                 "enzml": "http://www.enzymeml.org/v2/",
-                "OBO": "http://purl.obolibrary.org/obo/",
                 "schema": "https://schema.org/",
+                "OBO": "http://purl.obolibrary.org/obo/",
                 "id": {
                     "@id": "schema:identifier",
                     "@type": "@id"
@@ -10670,14 +10520,14 @@
     "equations": [],
     "parameters": [],
     "references": [],
-    "ld_id": "enzml:EnzymeMLDocument/fb367ddb-ae8e-48c1-95a7-15f1284d962e",
+    "ld_id": "enzml:EnzymeMLDocument/d1248890-1f02-4fca-b1fe-96e4bf1fe5a8",
     "ld_type": [
         "enzml:EnzymeMLDocument"
     ],
     "ld_context": {
         "enzml": "http://www.enzymeml.org/v2/",
-        "OBO": "http://purl.obolibrary.org/obo/",
         "schema": "https://schema.org/",
+        "OBO": "http://purl.obolibrary.org/obo/",
         "name": "schema:title",
         "created": "schema:dateCreated",
         "modified": "schema:dateModified",
