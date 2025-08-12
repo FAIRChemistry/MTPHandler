@@ -1210,6 +1210,32 @@ class PlateManager(BaseModel):
         return cls(**data)
 
     @classmethod
+    def read_tecan_infinity(
+        cls,
+        path: str,
+        ph: float | None = None,
+        name: str | None = None,
+    ) -> PlateManager:
+        """Read a `*.xlsx` Tecan Infinite file and create a PlateManager object.
+
+        Args:
+            path (str): Path to the Tecan Infinite file.
+            ph (float | None, optional): The pH value of the measurements. Defaults to None.
+            name (str | None, optional): Name of the plate. Defaults to None.
+
+        Returns:
+            PlateManager: PlateManager object.
+        """
+        from mtphandler.readers import read_tekan_infinity as reader
+
+        data: dict[str, Any] = {"plate": reader(path, ph)}
+
+        if name is not None:
+            data["name"] = name
+
+        return cls(**data)
+
+    @classmethod
     def read_biotek(
         cls,
         path: str,
@@ -1325,3 +1351,12 @@ class PlateManager(BaseModel):
             data["name"] = name
 
         return cls(**data)
+
+
+if __name__ == "__main__":
+    from rich import print
+
+    plate_manager = PlateManager.read_tecan_infinity(
+        path="docs/examples/data/tekan_infinity.xlsx", ph=7.4
+    )
+    print(plate_manager.plate)

@@ -4,5 +4,6 @@ from .spectra_max_190 import read_spectra_max_190  # noqa
 from .spectramax_parser import read_spectramax  # noqa
 from .tekan_magellan import read_tekan_magellan  # noqa
 from .tekan_spark import read_tekan_spark  # noqa
+from .tekan_infinity import read_tekan_infinity  # noqa
 from .multiskan_sky import read_multiskan_sky  # noqa
 from .new_device import read_new_device  # noqa
