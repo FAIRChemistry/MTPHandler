@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://fairchemistry.github.io/MTPHandler/</loc>
+         <lastmod>2025-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://fairchemistry.github.io/MTPHandler/supported_plate_readers/</loc>
+         <lastmod>2025-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://fairchemistry.github.io/MTPHandler/usage/</loc>
+         <lastmod>2025-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://fairchemistry.github.io/MTPHandler/api_reference/plate/</loc>
+         <lastmod>2025-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://fairchemistry.github.io/MTPHandler/api_reference/plate_manager/</loc>
+         <lastmod>2025-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://fairchemistry.github.io/MTPHandler/examples/SAHH_kinetics/</loc>
+         <lastmod>2025-11-20</lastmod>
+    </url>
+</urlset>

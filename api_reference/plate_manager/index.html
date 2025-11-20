@@ -1,0 +1,3246 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Max Häußler">
+      
+      
+        <link rel="canonical" href="https://fairchemistry.github.io/MTPHandler/api_reference/plate_manager/">
+      
+      
+        <link rel="prev" href="../../usage/">
+      
+      
+        <link rel="next" href="../plate/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Plate Manager - MTPHandler Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M8.17%202.76A10.1%2010.1%200%200%201%2012%202c1.31%200%202.61.26%203.83.76%201.21.5%202.31%201.24%203.24%202.17s1.67%202.03%202.17%203.24c.5%201.22.76%202.52.76%203.83%200%202.65-1.05%205.2-2.93%207.07A9.97%209.97%200%200%201%2012%2022a10.1%2010.1%200%200%201-3.83-.76%2010%2010%200%200%201-3.24-2.17A9.97%209.97%200%200%201%202%2012c0-2.65%201.05-5.2%202.93-7.07.93-.93%202.03-1.67%203.24-2.17M12%2017l1.56-3.42L17%2012l-3.44-1.56L12%207l-1.57%203.44L7%2012l3.43%201.58z%22/%3E%3C/svg%3E');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference-of-platemanager" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MTPHandler Documentation" class="md-header__button md-logo" aria-label="MTPHandler Documentation" data-md-component="logo">
+      
+  <img src="../../images/MTPHandler_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MTPHandler Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plate Manager
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/FAIRChemistry/MTPHandler" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FAIRChemistry/MTPHandler
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../usage/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Usage
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MTPHandler Documentation" class="md-nav__button md-logo" aria-label="MTPHandler Documentation" data-md-component="logo">
+      
+  <img src="../../images/MTPHandler_logo.png" alt="logo">
+
+    </a>
+    MTPHandler Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/FAIRChemistry/MTPHandler" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FAIRChemistry/MTPHandler
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plate Manager
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plate Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PlateManager
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.add_molecule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_molecule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.add_protein" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_protein
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.assign_init_conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assign_init_conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.assign_init_conditions_from_spreadsheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        assign_init_conditions_from_spreadsheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.blank_species" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        blank_species
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.config_logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        config_logger
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.create_assignment_spreadsheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_assignment_spreadsheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.define_molecule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        define_molecule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.define_protein" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        define_protein
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.get_calibrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_calibrator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.get_species" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_species
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.get_well" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_well
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.read_biotek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_biotek
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.read_multiskan_sky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_multiskan_sky
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.read_multiskan_spectrum_1500" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_multiskan_spectrum_1500
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.read_new_device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_new_device
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.read_spectra_max_190" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_spectra_max_190
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.read_tecan_spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_tecan_spark
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.read_tekan_magellan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        read_tekan_magellan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.set_absorption_contribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_absorption_contribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.slice_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        slice_data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.to_enzymeml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        to_enzymeml
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mtphandler.plate_manager.PlateManager.visualize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        visualize
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-reference-of-platemanager">API Reference of <code>PlateManager</code></h1>
+<div class="doc doc-object doc-class">
+<a id="mtphandler.plate_manager.PlateManager"></a>
+<div class="doc doc-contents first">
+<p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+<div class="doc doc-children">
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.add_molecule">
+<code class="highlight language-python"><span class="n">add_molecule</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">constant</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Adds a molecule to the list of molecules. Allows to update the <code>constant</code> attribute of the molecule.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>molecule</code>
+</td>
+<td>
+<code><span title="mtphandler.molecule.Molecule">Molecule</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Molecule object to add to the list of molecules.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>constant</code>
+</td>
+<td>
+<code><span title="bool">bool</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Indicates whether the <code>constant</code> attribute of the molecule should be updated. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.add_protein">
+<code class="highlight language-python"><span class="n">add_protein</span><span class="p">(</span><span class="n">protein</span><span class="p">,</span> <span class="n">constant</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Adds a protein to the list of proteins. Allows to update the <code>constant</code> attribute of the protein.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>protein</code>
+</td>
+<td>
+<code><span title="mtphandler.molecule.Protein">Protein</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Protein object to add to the list of proteins.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>constant</code>
+</td>
+<td>
+<code><span title="bool">bool</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Indicates whether the <code>constant</code> attribute of the protein should be updated. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.assign_init_conditions">
+<code class="highlight language-python"><span class="n">assign_init_conditions</span><span class="p">(</span><span class="n">species</span><span class="p">,</span> <span class="n">init_conc</span><span class="p">,</span> <span class="n">conc_unit</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">contributes_to_signal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Assigns a <code>Molecule</code> or <code>Protein</code> to specific wells on the plate based on the provided criteria.
+In this way the initial concentration of the species can be set for the respective wells in a row,
+column, all wells or all wells except for the specified. During the assignment, either an array of
+initial concentrations or a single initial concentration can be provided. If a single initial
+concentration is provided, it is assigned to all wells of e.g., a row or column.
+If an array of initial concentrations is provided, the length of the array must match the number of
+wells in the row or column.</p>
+<details class="tip" open="">
+<summary>Tip</summary>
+<p>For complex assignment scenarios, consider using the <code>assign_init_conditions_from_spreadsheet</code> function.</p>
+</details>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>species</code>
+</td>
+<td>
+<code><span title="mtphandler.molecule.Molecule">Molecule</span> | <span title="mtphandler.molecule.Protein">Protein</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The species to assign to the wells.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>init_conc</code>
+</td>
+<td>
+<code><span title="float">float</span> | <span title="list">list</span>[<span title="float">float</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The initial concentration(s) of the species.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>conc_unit</code>
+</td>
+<td>
+<code><span title="mdmodels.units.annotation.UnitDefinitionAnnot">UnitDefinitionAnnot</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The unit of concentration.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>to</code>
+</td>
+<td>
+<code><span title="mtphandler.plate_manager.ASSIGN_CASE">ASSIGN_CASE</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The target location(s) for assigning the species. It should be one of the allowed cases.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>ids</code>
+</td>
+<td>
+<code><span title="str">str</span> | <span title="int">int</span> | <span title="list">list</span>[<span title="str">str</span>] | <span title="list">list</span>[<span title="int">int</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The ID(s) of the target wells, rows, or columns. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>contributes_to_signal</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Indicates if the assigned species contributes to the signal.
+Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>silent</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, no output is printed. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Raises:</span></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><span title="AttributeError">AttributeError</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If the species does not exist in the list of molecules or proteins.</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code><span title="AttributeError">AttributeError</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If the 'to' argument is not a valid <code>ASSIGN_CASE</code>.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>None</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.assign_init_conditions_from_spreadsheet">
+<code class="highlight language-python"><span class="n">assign_init_conditions_from_spreadsheet</span><span class="p">(</span><span class="n">conc_unit</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Assign initial concentrations from an Excel spreadsheet to the wells on the plate.</p>
+<details class="note" open="">
+<summary>Note</summary>
+<p>This function goes through the sheets in an excel spreadsheet. If the sheet name
+matches the id of a protein or molecule defined for the plate, the initial concentration
+form the plate map in the excel spreadsheet is assigned to the respective well.</p>
+<p>The excel spreadsheet must have the following structure:</p>
+<ul>
+<li>The first row must contain the column numbers from 1 to 12.</li>
+<li>The first column must contain the row letters from A to H.</li>
+<li>If a cell is left empty for a species, the species is not assigned to the well.</li>
+<li>If the initial concentration is <code>0</code>, the species is added to the well. This is useful for
+    specifying a product which is not present in the initial reaction mixture, but is formed
+    during the reaction.</li>
+</ul>
+</details>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>conc_unit</code>
+</td>
+<td>
+<code><span title="mdmodels.units.annotation.UnitDefinitionAnnot">UnitDefinitionAnnot</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The unit of concentration.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to the Excel spreadsheet.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>header</code>
+</td>
+<td>
+<code><span title="int">int</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Row to use as the column names. Defaults to 0.</p>
+</div>
+</td>
+<td>
+<code>0</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>index</code>
+</td>
+<td>
+<code><span title="int">int</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Column to use as the row labels. Defaults to 0.</p>
+</div>
+</td>
+<td>
+<code>0</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>silent</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, no output is printed. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.blank_species">
+<code class="highlight language-python"><span class="n">blank_species</span><span class="p">(</span><span class="n">species</span><span class="p">,</span> <span class="n">wavelength</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">control_wells</span><span class="o">=</span><span class="p">[],</span> <span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Blank the signal contribution of a species at a given wavelength.
+Therefore, control wells of that species must be present on the plate.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>species</code>
+</td>
+<td>
+<code><span title="mtphandler.molecule.Molecule">Molecule</span> | <span title="mtphandler.molecule.Protein">Protein</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The species to blank.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>wavelength</code>
+</td>
+<td>
+<code><span title="float">float</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The wavelength at which to blank the species.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>control_wells</code>
+</td>
+<td>
+<code><span title="list">list</span>[<span title="str">str</span>] | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>List of well ids that are used to calculate the absorption contribution of the species.
+Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>[]</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>silent</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, no output is printed. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Raises:</span></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><span title="ValueError">ValueError</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If no wells are found to calculate the absorption contribution of the species.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.config_logger">
+<code class="highlight language-python"><span class="n">config_logger</span><span class="p">(</span><span class="n">log_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">'INFO'</span><span class="p">,</span> <span class="n">to_stdout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+</span>
+</h2>
+<div class="doc doc-contents">
+<p>Configures the internal Loguru logger.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>log_path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to the log file. If None, file logging is disabled.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>level</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Logging level (e.g., "DEBUG", "INFO", "WARNING", "ERROR").</p>
+</div>
+</td>
+<td>
+<code>'INFO'</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>to_stdout</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, log messages will also be forwarded to stdout.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Usage (in a Jupyter notebook or script):
+    &gt;&gt;&gt; from mtphandler import handler
+    &gt;&gt;&gt; handler.config_logger(log_path="app.log", level="DEBUG", to_stdout=True)
+    &gt;&gt;&gt; handler.logger.info("This message will go to the file and stdout.")</p>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.create_assignment_spreadsheet">
+<code class="highlight language-python"><span class="n">create_assignment_spreadsheet</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">'assignment.xlsx'</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Create an Excel spreadsheet for assigning initial concentrations. The spreadsheet
+contains a separate sheet for each species defined on the plate, with validation
+to allow only numerical values in the input cells and prevent changes to all other cells.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to save the assignment spreadsheet. Defaults to "assignment.xlsx".</p>
+</div>
+</td>
+<td>
+<code>'assignment.xlsx'</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>overwrite</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, the file is overwritten if it already exists. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.define_molecule">
+<code class="highlight language-python"><span class="n">define_molecule</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">pubchem_cid</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constant</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Defines a molecule which can be used to assign to wells on the plate.
+If no name is provided, the molecule name is retrieved from the PubChem database.
+If the molecule is not known in the PubChem database, please specify <code>pubchem_cid=-1</code>.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>id</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Internal identifier of the molecule such as <code>s0</code> or <code>ABTS</code>.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>pubchem_cid</code>
+</td>
+<td>
+<code><span title="int">int</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>PubChem CID of the molecule.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="str">str</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the molecule. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>constant</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Indicates whether the molecule concentration is constant throughout the experiment. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Raises:</span></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><span title="ValueError">ValueError</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If the PubChem CID is not an integer.</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code><span title="ValueError">ValueError</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If the name is not provided and the PubChem CID is not available.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Molecule</code></td> <td>
+<code><span title="mtphandler.molecule.Molecule">Molecule</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Molecule object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.define_protein">
+<code class="highlight language-python"><span class="n">define_protein</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">uniprot_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">constant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Defines a protein which can be used to assign to wells on the plate.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>id</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Internal identifier of the protein such as <code>p0</code>, <code>MAT_K78M</code> or <code>GFP</code>.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the protein.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>uniprot_id</code>
+</td>
+<td>
+<code><span title="str">str</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>UniProt ID of the protein. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>sequence</code>
+</td>
+<td>
+<code><span title="str">str</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Amino acid sequence of the protein. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>constant</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Indicates whether the protein concentration is constant throughout the experiment. Defaults to True.</p>
+</div>
+</td>
+<td>
+<code>True</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Protein</code></td> <td>
+<code><span title="mtphandler.molecule.Protein">Protein</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Protein object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.get_calibrator">
+<code class="highlight language-python"><span class="n">get_calibrator</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wavelength</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">well_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Initialize a CaliPytion <code>Calibrator</code> for a molecule on the plate.
+The calibrator allows eighter to proceed with predefined suitable calibration models or
+to define and fit custom models. For more information on the CaliPytion, please refer to the
+(documentation)[https://fairchemistry.github.io/CaliPytion/usage/]</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>molecule</code>
+</td>
+<td>
+<code><span title="mtphandler.molecule.Molecule">Molecule</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The molecule for which to initialize the calibrator.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>cutoff</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The cutoff value for the calibration. Absorption values
+above the cutoff are not considered for the calibration. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>wavelength</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The wavelength at which to initialize the calibrator.
+If only one wavelength was measured, the wavelength is automatically set. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>well_ids</code>
+</td>
+<td>
+<code><span title="list">list</span>[<span title="str">str</span>] | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The IDs of the wells to use for the calibration. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Calibrator</code></td> <td>
+<code><span title="calipytion.Calibrator">Calibrator</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Calibrator object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.get_species">
+<code class="highlight language-python"><span class="n">get_species</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Get a species from the list of molecules and proteins by its id.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>id</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The id of the species.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Raises:</span></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><span title="ValueError">ValueError</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If the species with the given id is not found.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><span title="mtphandler.molecule.Protein">Protein</span> | <span title="mtphandler.molecule.Molecule">Molecule</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Protein | Molecule: The species object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.get_well">
+<code class="highlight language-python"><span class="n">get_well</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Get a well from the plate by its id.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>id</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The id of the well.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Raises:</span></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><span title="ValueError">ValueError</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If the well with the given id is not found.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>Well</code></td> <td>
+<code><span title="mtphandler.model.Well">Well</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The well object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.read_biotek">
+<code class="highlight language-python"><span class="n">read_biotek</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">ph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+</span>
+</h2>
+<div class="doc doc-contents">
+<p>Read a <code>*.xlsx</code> file exported from a BioTek Epoch 2 software and create a PlateManager object.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to the BioTek Epoch 2 file.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>ph</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The pH value of the measurements. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="str">str</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the plate. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>PlateManager</code></td> <td>
+<code><a class="autorefs autorefs-internal" title="mtphandler.plate_manager.PlateManager" href="#mtphandler.plate_manager.PlateManager">PlateManager</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>PlateManager object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.read_multiskan_sky">
+<code class="highlight language-python"><span class="n">read_multiskan_sky</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">ph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+</span>
+</h2>
+<div class="doc doc-contents">
+<p>Read a <code>*.xlsx</code> file exported from a Multiskan Sky and create a PlateManager object.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to the Multiskan Sky file.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>ph</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The pH value of the measurements. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="str">str</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the plate. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>PlateManager</code></td> <td>
+<code><a class="autorefs autorefs-internal" title="mtphandler.plate_manager.PlateManager" href="#mtphandler.plate_manager.PlateManager">PlateManager</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The PlateManager object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.read_multiskan_spectrum_1500">
+<code class="highlight language-python"><span class="n">read_multiskan_spectrum_1500</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">time_unit</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">temperature_unit</span><span class="o">=</span><span class="s1">'C'</span><span class="p">,</span> <span class="n">ph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+</span>
+</h2>
+<div class="doc doc-contents">
+<p>Read a <code>*.txt</code> file exported from a Multiskan Spectrum 1500 and create a PlateManager object.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the plate.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to the Multiskan Spectrum 1500 file.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>time</code>
+</td>
+<td>
+<code><span title="list">list</span>[<span title="float">float</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>List of time points.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>time_unit</code>
+</td>
+<td>
+<code><span title="mdmodels.units.annotation.UnitDefinitionAnnot">UnitDefinitionAnnot</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Unit of time.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>temperature</code>
+</td>
+<td>
+<code><span title="float">float</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Temperature of the measurements.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>temperature_unit</code>
+</td>
+<td>
+<code><span title="mdmodels.units.annotation.UnitDefinitionAnnot">UnitDefinitionAnnot</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Unit of temperature. Defaults to C.</p>
+</div>
+</td>
+<td>
+<code>'C'</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>ph</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The pH value of the measurements. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>_type_</code></td> <td>
+<code><a class="autorefs autorefs-internal" title="mtphandler.plate_manager.PlateManager" href="#mtphandler.plate_manager.PlateManager">PlateManager</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p><em>description</em></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.read_new_device">
+<code class="highlight language-python"><span class="n">read_new_device</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">ph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">temperature_unit</span><span class="o">=</span><span class="s1">'C'</span><span class="p">)</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+</span>
+</h2>
+<div class="doc doc-contents">
+<p>Read a <code>*.xlsx</code> file exported from a new device and create a PlateManager object.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to the file.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>temperature</code>
+</td>
+<td>
+<code><span title="float">float</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The temperature of the measurements.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>ph</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The pH value of the measurements. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="str">str</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the plate. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>temperature_unit</code>
+</td>
+<td>
+<code><span title="mdmodels.units.annotation.UnitDefinitionAnnot">UnitDefinitionAnnot</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Unit of temperature. Defaults to C.</p>
+</div>
+</td>
+<td>
+<code>'C'</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>PlateManager</code></td> <td>
+<code><a class="autorefs autorefs-internal" title="mtphandler.plate_manager.PlateManager" href="#mtphandler.plate_manager.PlateManager">PlateManager</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>PlateManager object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.read_spectra_max_190">
+<code class="highlight language-python"><span class="n">read_spectra_max_190</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">ph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+</span>
+</h2>
+<div class="doc doc-contents">
+<p>Read a <code>*.txt</code> file exported from a SpectraMax 190 software and create a PlateManager object.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to the SpectraMax 190 file.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>ph</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The pH value of the measurements. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="str">str</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the plate. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>PlateManager</code></td> <td>
+<code><a class="autorefs autorefs-internal" title="mtphandler.plate_manager.PlateManager" href="#mtphandler.plate_manager.PlateManager">PlateManager</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>PlateManager object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.read_tecan_spark">
+<code class="highlight language-python"><span class="n">read_tecan_spark</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">ph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+</span>
+</h2>
+<div class="doc doc-contents">
+<p>Read a <code>*.xlsx</code> TECAN Spark file and create a PlateManager object.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to the TECAN Spark file.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>ph</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The pH value of the measurements. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="str">str</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the plate. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>PlateManager</code></td> <td>
+<code><a class="autorefs autorefs-internal" title="mtphandler.plate_manager.PlateManager" href="#mtphandler.plate_manager.PlateManager">PlateManager</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>PlateManager object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.read_tekan_magellan">
+<code class="highlight language-python"><span class="n">read_tekan_magellan</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">wavelength</span><span class="p">,</span> <span class="n">ph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+</span>
+</h2>
+<div class="doc doc-contents">
+<p>Read a <code>*.xlsx</code> file exported from a TECAN Magellan software and create a PlateManager object.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>path</code>
+</td>
+<td>
+<code><span title="str">str</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Path to the Magellan file.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>wavelength</code>
+</td>
+<td>
+<code><span title="float">float</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The wavelength of the measurements.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>ph</code>
+</td>
+<td>
+<code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The pH value of the measurements. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the plate. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>PlateManager</code></td> <td>
+<code><a class="autorefs autorefs-internal" title="mtphandler.plate_manager.PlateManager" href="#mtphandler.plate_manager.PlateManager">PlateManager</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>PlateManager object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.set_absorption_contribution">
+<code class="highlight language-python"><span class="n">set_absorption_contribution</span><span class="p">(</span><span class="n">species</span><span class="p">,</span> <span class="n">contributes_to_signal</span><span class="p">,</span> <span class="n">wavelength</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Set the contribution of a species to the signal in all wells.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>species</code>
+</td>
+<td>
+<code><span title="mtphandler.molecule.Molecule">Molecule</span> | <span title="mtphandler.molecule.Protein">Protein</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The species for which to set the contribution to the signal.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>contributes_to_signal</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, the species contributes to the signal. If False, the species does not contribute to the signal.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>wavelength</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The wavelength at which to set the contribution to the signal. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>silent</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, no output is printed. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.slice_data">
+<code class="highlight language-python"><span class="n">slice_data</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Slices the time and absorption data of all wells in the plate
+that only contains the data between the start and end time.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>start</code>
+</td>
+<td>
+<code><span title="float">float</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Start time of the slice.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>end</code>
+</td>
+<td>
+<code><span title="float">float</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>End time of the slice.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.to_enzymeml">
+<code class="highlight language-python"><span class="n">to_enzymeml</span><span class="p">(</span><span class="n">detected_molecule</span><span class="p">,</span> <span class="n">well_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">catalyzed_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to_concentration</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">extrapolate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">wavelength</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Convert the plate to an EnzymeML document.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>name</code>
+</td>
+<td>
+<code><span title="str">str</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Name of the EnzymeML document. Defaults to the name of the plate.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>detected_molecule</code>
+</td>
+<td>
+<code><span title="mtphandler.molecule.Molecule">Molecule</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>The molecule that was detected in the wells.</p>
+</div>
+</td>
+<td>
+<em>required</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>well_ids</code>
+</td>
+<td>
+<code><span title="list">list</span>[<span title="str">str</span>] | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>List of well ids to include in the EnzymeML document.
+If not provided, all wells are included. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>to_concentration</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, the signal is converted to concentration. Therefore,
+a calibrator must be defined for the respective molecule. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>extrapolate</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, and <code>to_concentration</code> is True, measured absorption values
+that are outside the range of the calibrator are extrapolated. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>catalyzed_only</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, only wells that contain the detected molecule and a
+protein are included in the EnzymeML document. Defaults to True.</p>
+</div>
+</td>
+<td>
+<code>True</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>wavelength</code>
+</td>
+<td>
+<code><span title="float">float</span> | None</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If multiple wavelengths were measured, the wavelength for
+which to convert the signal to concentration needs to be specified. Defaults to None.</p>
+</div>
+</td>
+<td>
+<code>None</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>silent</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, no output is printed. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">Returns:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th> <th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>EnzymeMLDocument</code></td> <td>
+<code><span title="pyenzyme.EnzymeMLDocument">EnzymeMLDocument</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p><a href="https://github.com/EnzymeML/PyEnzyme"><code>pyenzyme</code></a> <code>EnzymeMLDocument</code> object.</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="mtphandler.plate_manager.PlateManager.visualize">
+<code class="highlight language-python"><span class="n">visualize</span><span class="p">(</span><span class="n">zoom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">wavelengths</span><span class="o">=</span><span class="p">[],</span> <span class="n">darkmode</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+</h2>
+<div class="doc doc-contents">
+<p>Visualize the plate.</p>
+<p><span class="doc-section-title">Parameters:</span></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>zoom</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If False, the scaling of the signal (y-axis) is the same for all wells.
+If True, the scaling is adjusted for each well. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>wavelengths</code>
+</td>
+<td>
+<code><span title="list">list</span>[<span title="float">float</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>Only visualize the signal at the specified wavelengths.
+If not specified, all wavelengths are visualized. Defaults to [].</p>
+</div>
+</td>
+<td>
+<code>[]</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>darkmode</code>
+</td>
+<td>
+<code><span title="bool">bool</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If True, the plot is displayed in dark mode. Defaults to False.</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.links", "content.code.select", "content.code.copy", "content.code.annotation"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
