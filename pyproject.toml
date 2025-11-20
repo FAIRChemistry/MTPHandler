@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mtphandler"
-version = "0.2.19"
+version = "0.2.20"
 description = "Python package for processing, enriching, and converting microtiter plate data into standardized EnzymeML time-course data, ready for data science."
 authors = ["haeussma <83341109+haeussma@users.noreply.github.com>"]
 license = "MIT License"
@@ -10,16 +10,16 @@ include = ["mtphandler/units/ontomaps.toml"]
 
 
 [tool.poetry.dependencies]
-python = "^3.10"
-numpy = "^1.26.4"
-plotly = "^5.18.0"
+python = ">=3.10,<3.16"
+numpy = ">=1.26.4"
+plotly = ">=6.3.0"
 pandas = { version = ">=2.0", extras = ["excel"] }
-pyenzyme = { git = "https://github.com/EnzymeML/PyEnzyme.git"}
-calipytion = { git = "https://github.com/FAIRChemistry/CaliPytion.git"}
-rich = "^13.7.1"
+pyenzyme = ">=2.0.0"
+calipytion = ">=1.0.2"
+rich = ">=3.7.1"
 httpx = ">=0.27.2"
-loguru = "^0.7.3"
-mdmodels = "^0.2.0"
+loguru = ">=0.7.3"
+mdmodels = ">=0.2.0"
 
 [tool.poetry.group.dev.dependencies]
 mkdocs-material = "^9.5.7"
