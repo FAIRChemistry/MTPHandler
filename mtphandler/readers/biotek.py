@@ -61,11 +61,22 @@ def read_biotek(
 
     wavelengths = extract_integers(wavelengths_cell)
 
-    measurement_int_cell = str(df.iloc[15, 1])
-    if "add final component" in measurement_int_cell.lower():
-        measurement_int_cell = str(df.iloc[16, 1])
-
-    measurement_interval = parse_measurement_interval(measurement_int_cell)
+    measurement_interval = None
+    for index, row_value in df.iloc[:, 0].items():
+        if isinstance(row_value, str) and "start kinetic" in row_value.lower(): # this is the start of a kinetic read block
+            interval_candidate = str(df.iloc[index, 1])
+            try:
+                measurement_interval = parse_measurement_interval(interval_candidate)
+                break # Found a valid interval, stop searching. Note that there could be more kinetic intervals later.
+            except ValueError:
+                continue # Keep searching if this one fails
+    
+    if measurement_interval is None:
+        # Fallback to original logic if 'Start Kinetic' not found or parsed
+        measurement_int_cell = str(df.iloc[15, 1])
+        if "add final component" in measurement_int_cell.lower():
+            measurement_int_cell = str(df.iloc[16, 1])
+        measurement_interval = parse_measurement_interval(measurement_int_cell)
 
     plate = Plate(
         date_measured=timestamp,
