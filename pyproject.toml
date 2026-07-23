@@ -28,6 +28,7 @@ include = ["mtphandler*"]
 
 [dependency-groups]
 dev = [
+  "pre-commit>=3.7.0",
   "mkdocs-material>=9.5.7",
   "pytest>=8.0.0",
   "devtools>=0.12.2",
