@@ -291,7 +291,12 @@ def test_define_molecule_without_name(setup_handler):
     molecule_id = "m1"
     pubchem_cid = 12345
 
-    mol = plate_manager.define_molecule(id=molecule_id, pubchem_cid=pubchem_cid)
+    try:
+        mol = plate_manager.define_molecule(id=molecule_id, pubchem_cid=pubchem_cid)
+    except ValueError as e:
+        if "PubChem" in str(e):
+            pytest.skip("PubChem unreachable (network/rate-limit)")
+        raise
 
     assert len(mol.name) > 0
 
