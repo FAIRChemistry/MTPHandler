@@ -1,10 +1,14 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "mtphandler"
-version = "0.2.22"
+version = "0.2.23"
 description = "Python package for processing, enriching, and converting microtiter plate data into standardized EnzymeML time-course data, ready for data science."
 readme = "README.md"
 requires-python = ">=3.10,<3.14"
-license = { text = "MIT License" }
+license = "MIT"
 authors = [{ name = "haeussma", email = "83341109+haeussma@users.noreply.github.com" }]
 
 dependencies = [
@@ -19,8 +23,12 @@ dependencies = [
   "mdmodels>=0.2.0",
 ]
 
+[tool.setuptools.packages.find]
+include = ["mtphandler*"]
+
 [dependency-groups]
 dev = [
+  "pre-commit>=3.7.0",
   "mkdocs-material>=9.5.7",
   "pytest>=8.0.0",
   "devtools>=0.12.2",
@@ -31,4 +39,9 @@ dev = [
   "mkdocs-plotly-plugin>=0.1.3",
   "notebook<7",
   "jupyter-contrib-nbextensions>=0.7.0",
+]
+
+[tool.pytest.ini_options]
+markers = [
+  "network: test hits a live external API (PubChem); excluded in CI datacenter runs",
 ]

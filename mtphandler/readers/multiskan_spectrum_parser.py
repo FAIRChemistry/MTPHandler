@@ -22,7 +22,7 @@ def read_multiskan_spectrum_1500(
     if not temperature:
         TEMP_PATTERN = r"\d{1,3}deg"
         temperature = re.findall(TEMP_PATTERN, path)[0]
-        temperature = re.split("(\d+)", temperature)[1]
+        temperature = re.split(r"(\d+)", temperature)[1]
         if not temperature:
             raise ValueError("Could not find pH in path. Please specify 'ph'.")
 

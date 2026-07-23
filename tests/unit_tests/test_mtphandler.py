@@ -283,6 +283,7 @@ def test_define_molecule_with_non_integer_pubchem_cid(setup_handler):
         )
 
 
+@pytest.mark.network
 def test_define_molecule_without_name(setup_handler):
     # Initialize the class object
     plate_manager, plate = setup_handler
