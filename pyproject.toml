@@ -7,7 +7,7 @@ name = "mtphandler"
 version = "0.2.23"
 description = "Python package for processing, enriching, and converting microtiter plate data into standardized EnzymeML time-course data, ready for data science."
 readme = "README.md"
-requires-python = ">=3.10,<3.14"
+requires-python = ">=3.10,<3.15"
 license = "MIT"
 authors = [{ name = "haeussma", email = "83341109+haeussma@users.noreply.github.com" }]
 
