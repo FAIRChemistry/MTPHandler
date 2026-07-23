@@ -5,13 +5,12 @@ on: push
 jobs:
   test:
     runs-on: ${{ matrix.os }}
-    # 3.14 is allowed to fail: pyenzyme -> fastobo has no 3.14 wheel yet.
-    continue-on-error: ${{ matrix.python-version == '3.14' }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        # 3.14 blocked: pyenzyme pins fastobo<0.14, which has no 3.14 wheel.
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
 
     steps:
       - uses: actions/checkout@v4
