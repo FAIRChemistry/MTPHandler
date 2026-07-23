@@ -25,5 +25,6 @@ jobs:
         run: uv sync --group dev
 
       - name: Run tests with pytest
-        # Notebooks (--nbval) hit live PubChem and flake in CI; run the test suite only.
-        run: uv run pytest tests/
+        # Skip live-API tests: CI runs from datacenter IPs that PubChem rate-limits.
+        # They still run locally by default with a plain `pytest`.
+        run: uv run pytest tests/ -m "not network"

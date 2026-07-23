@@ -283,6 +283,7 @@ def test_define_molecule_with_non_integer_pubchem_cid(setup_handler):
         )
 
 
+@pytest.mark.network
 def test_define_molecule_without_name(setup_handler):
     # Initialize the class object
     plate_manager, plate = setup_handler
@@ -291,12 +292,7 @@ def test_define_molecule_without_name(setup_handler):
     molecule_id = "m1"
     pubchem_cid = 12345
 
-    try:
-        mol = plate_manager.define_molecule(id=molecule_id, pubchem_cid=pubchem_cid)
-    except ValueError as e:
-        if "PubChem" in str(e):
-            pytest.skip("PubChem unreachable (network/rate-limit)")
-        raise
+    mol = plate_manager.define_molecule(id=molecule_id, pubchem_cid=pubchem_cid)
 
     assert len(mol.name) > 0
 

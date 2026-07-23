@@ -39,3 +39,8 @@ dev = [
   "notebook<7",
   "jupyter-contrib-nbextensions>=0.7.0",
 ]
+
+[tool.pytest.ini_options]
+markers = [
+  "network: test hits a live external API (PubChem); excluded in CI datacenter runs",
+]
