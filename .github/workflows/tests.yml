@@ -25,4 +25,5 @@ jobs:
         run: uv sync --group dev
 
       - name: Run tests with pytest
-        run: uv run pytest --nbval --nbval-lax
+        # Notebooks (--nbval) hit live PubChem and flake in CI; run the test suite only.
+        run: uv run pytest tests/
