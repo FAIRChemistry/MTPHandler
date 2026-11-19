@@ -6,3 +6,4 @@ from .tekan_magellan import read_tekan_magellan  # noqa
 from .tekan_spark import read_tekan_spark  # noqa
 from .multiskan_sky import read_multiskan_sky  # noqa
 from .new_device import read_new_device  # noqa
+from .varioskan import read_varioskan  # noqa

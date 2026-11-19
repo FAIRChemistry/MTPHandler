@@ -1325,3 +1325,29 @@ class PlateManager(BaseModel):
             data["name"] = name
 
         return cls(**data)
+
+    @classmethod
+    def read_varioskan(
+        cls,
+        path: str,
+        ph: float | None = None,
+        name: str | None = None,
+    ) -> PlateManager:
+        """Read a `*.xlsx` file exported from a Varioskan ALF and create a PlateManager object.
+
+        Args:
+            path (str): Path to the Varioskan ALF file.
+            ph (float | None, optional): The pH value of the measurements. Defaults to None.
+            name (str | None, optional): Name of the plate. Defaults to None.
+
+        Returns:
+            PlateManager: The PlateManager object.
+        """
+        from mtphandler.readers import read_varioskan as reader
+
+        data: dict[str, Any] = {"plate": reader(path, ph)}
+
+        if name is not None:
+            data["name"] = name
+
+        return cls(**data)
