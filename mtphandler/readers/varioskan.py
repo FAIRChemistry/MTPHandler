@@ -18,10 +18,11 @@ _TEMPERATURE_NUMBER = re.compile(r"(\d+(?:[.,]\d+)?)")
 def read_varioskan(path: str, ph: float | None = None) -> Plate:
     """Read a SkanIt `*.xlsx` export from a Varioskan ALF.
 
-    Endpoint grids, kinetic time courses, and absorbance spectra are accepted.
-    Calculated sheets such as dilution factor and blank subtraction are ignored.
-    Temperature is taken from the instrument setpoint or the run log. A measurement-only
-    export, such as a spectrum without those sheets, leaves the temperature empty.
+    Endpoint grids and kinetic time courses are accepted. Absorbance spectra are
+    not: the plate model stores one wavelength per measurement, and EnzymeML
+    export uses a single wavelength. Calculated sheets such as dilution factor
+    and blank subtraction are ignored. Temperature is the instrument setpoint,
+    or the first run-log temperature when no setpoint was recorded.
 
     Args:
         path: Path to the Excel export.
@@ -38,7 +39,7 @@ def read_varioskan(path: str, ph: float | None = None) -> Plate:
     plate = Plate(
         name=name,
         date_measured=timestamp,
-        temperatures=[] if temperature is None else [temperature],
+        temperatures=[temperature],
         temperature_unit="C",
     )
 
@@ -53,10 +54,8 @@ def read_varioskan(path: str, ph: float | None = None) -> Plate:
         layout = _detect_layout(frame)
         if layout == "endpoint":
             _parse_endpoint(frame, plate, ph)
-        elif layout == "kinetic":
-            _parse_kinetic(frame, plate, ph)
         else:
-            _parse_spectrum(frame, plate, ph)
+            _parse_kinetic(frame, plate, ph)
 
     if not plate.wells:
         raise ValueError(f"No wells found in {path}.")
@@ -66,47 +65,33 @@ def read_varioskan(path: str, ph: float | None = None) -> Plate:
 
 def _assert_varioskan(workbook: pd.ExcelFile, path: str) -> None:
     sheet = _find_sheet(workbook, "Instrument information")
-    if sheet is not None:
-        frame = pd.read_excel(path, sheet_name=sheet, header=None)
-        instrument_name = _value_beside_label(frame, "Name")
-        if instrument_name is None or "varioskan" not in instrument_name.lower():
-            raise ValueError(
-                f"Expected a Varioskan export, found instrument {instrument_name!r}."
-            )
-        return
+    if sheet is None:
+        raise ValueError(f"Expected a Varioskan SkanIt export, got {path}.")
 
-    for sheet_name in workbook.sheet_names:
-        if not sheet_name.startswith("Absorbance"):
-            continue
-        frame = pd.read_excel(path, sheet_name=sheet_name, header=None)
-        if _text(frame.iat[0, 0]) == "Measurement results":
-            return
-
-    raise ValueError(f"Expected a Varioskan SkanIt export, got {path}.")
+    frame = pd.read_excel(path, sheet_name=sheet, header=None)
+    instrument_name = _value_beside_label(frame, "Name")
+    if instrument_name is None or "varioskan" not in instrument_name.lower():
+        raise ValueError(
+            f"Expected a Varioskan export, found instrument {instrument_name!r}."
+        )
 
 
 def _session(workbook: pd.ExcelFile, path: str) -> tuple[str, str]:
     sheet = _find_sheet(workbook, "Session information")
-    if sheet is not None:
-        frame = pd.read_excel(path, sheet_name=sheet, header=None)
-        name = _value_beside_label(frame, "Session name")
-        timestamp = _value_beside_label(frame, "Execution time")
-        if name and timestamp:
-            return name, timestamp
+    if sheet is None:
+        raise ValueError(f"Could not find session name and time in {path}.")
 
-    frame = _first_absorbance_frame(workbook, path)
-    name = _text(frame.iat[1, 0])
-    timestamp = _text(frame.iat[2, 0])
+    frame = pd.read_excel(path, sheet_name=sheet, header=None)
+    name = _value_beside_label(frame, "Session name")
+    timestamp = _value_beside_label(frame, "Execution time")
     if not name or not timestamp:
         raise ValueError(f"Could not find session name and time in {path}.")
     return name, timestamp
 
 
-def _temperature(workbook: pd.ExcelFile, path: str) -> float | None:
+def _temperature(workbook: pd.ExcelFile, path: str) -> float:
     instrument_sheet = _find_sheet(workbook, "Instrument information")
     run_log_sheet = _find_sheet(workbook, "Run log")
-    if instrument_sheet is None and run_log_sheet is None:
-        return None
 
     if instrument_sheet is not None:
         instrument = pd.read_excel(path, sheet_name=instrument_sheet, header=None)
@@ -203,51 +188,6 @@ def _parse_kinetic(frame: pd.DataFrame, plate: Plate, ph: float | None) -> None:
             _add_measurement(plate, well_id, ph, wavelength, absorption, times)
 
 
-def _parse_spectrum(frame: pd.DataFrame, plate: Plate, ph: float | None) -> None:
-    header_rows = [
-        row_index
-        for row_index in range(len(frame))
-        if _text(frame.iat[row_index, 0]) == "Wavelength"
-    ]
-    if not header_rows:
-        raise ValueError("Spectrum sheet has no Wavelength column.")
-
-    for row_index in header_rows:
-        headers = [
-            _text(frame.iat[row_index, column]) for column in range(frame.shape[1])
-        ]
-        well_columns = _well_columns(headers)
-        if not well_columns:
-            raise ValueError("Spectrum block has no well columns.")
-
-        series: dict[str, list[tuple[float, float]]] = {
-            well_id: [] for _, well_id in well_columns
-        }
-        data_row = row_index + 1
-        while data_row < len(frame):
-            wavelength = _as_float(frame.iat[data_row, 0])
-            if wavelength is None:
-                break
-            for column, well_id in well_columns:
-                absorption = _as_float(frame.iat[data_row, column])
-                if absorption is None:
-                    raise ValueError(
-                        f"Missing spectrum value for well {well_id} at {wavelength} nm."
-                    )
-                series[well_id].append((wavelength, absorption))
-            data_row += 1
-
-        for well_id, points in series.items():
-            well = _well(plate, well_id, ph)
-            for wavelength, absorption in points:
-                well.add_to_measurements(
-                    wavelength=wavelength,
-                    absorption=[absorption],
-                    time=[0.0],
-                    time_unit="s",
-                )
-
-
 def _add_measurement(
     plate: Plate,
     well_id: str,
@@ -296,7 +236,9 @@ def _detect_layout(frame: pd.DataFrame) -> str:
     if "Reading" in first_column:
         return "kinetic"
     if "Wavelength" in first_column:
-        return "spectrum"
+        raise ValueError(
+            "Absorbance spectra are not supported. Export an endpoint or kinetic measurement."
+        )
     if "Abs" in first_column:
         return "endpoint"
     raise ValueError("Unrecognized Varioskan absorbance layout.")
@@ -307,13 +249,6 @@ def _find_sheet(workbook: pd.ExcelFile, sheet_name: str) -> str | None:
         if name.lower() == sheet_name.lower():
             return name
     return None
-
-
-def _first_absorbance_frame(workbook: pd.ExcelFile, path: str) -> pd.DataFrame:
-    for sheet_name in workbook.sheet_names:
-        if sheet_name.startswith("Absorbance"):
-            return pd.read_excel(path, sheet_name=sheet_name, header=None)
-    raise ValueError(f"No absorbance sheet found in {path}.")
 
 
 def _value_beside_label(frame: pd.DataFrame, label: str) -> str | None:
